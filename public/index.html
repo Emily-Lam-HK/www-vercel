@@ -1,0 +1,884 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Emily Lam</title>
+<meta name="description" content="Science communicator, event producer and drawer in Hong Kong. Book a meeting, find my links, or get to know me.">
+<meta name="theme-color" content="#F6F8F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1B1D1A" media="(prefers-color-scheme: dark)">
+<meta property="og:image" content="https://emilylam.hk/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:title" content="Emily Lam">
+<meta property="og:description" content="Science communicator · Event producer">
+<meta property="og:url" content="https://emilylam.hk">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&display=swap">
+<style>
+:root{--bg:#F6F8F3;--surface:#FFFFFF;--ink:#16210F;--muted:#55624C;--line:#D5DDCC;--soft:#EAF3DE;--soft-ink:#27500A;--primary:#3B6D11;--icon:#3B6D11;--scrim:rgba(22,33,15,.55);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#1B1D1A;--surface:#232621;--ink:#EEF1EA;--muted:#A9B2A2;--line:#3B4038;--soft:#EAF3DE;--soft-ink:#27500A;--primary:#3B6D11;--icon:#7BC04A;--scrim:rgba(0,0,0,.6);color-scheme:dark}}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;zoom:.9}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
+a{color:var(--ink)}a:hover{color:var(--icon)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--icon);outline-offset:2px}
+.wrap{max-width:460px;margin:0 auto;padding:calc(12px + env(safe-area-inset-top)) 20px calc(36px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px}
+.muted{color:var(--muted)}
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:6px}
+.who{min-width:0;text-align:right;display:flex;flex-direction:column;gap:2px}
+.who h1{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.who p{margin:0;font-size:14px;color:var(--muted)}
+.lang{position:relative;flex:0 0 auto}
+.lang-btn{min-height:40px;display:inline-flex;align-items:center;gap:6px;padding:0 12px;border:1px solid var(--line);border-radius:999px;background:transparent;cursor:pointer;font-size:14px;font-weight:600}
+.lang-menu{position:absolute;top:46px;left:0;z-index:30;min-width:168px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:0 8px 24px rgba(22,33,15,.14);display:flex;flex-direction:column;gap:2px}
+.lang-menu button{min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:var(--ink);cursor:pointer;font-size:15px;font-weight:600;text-align:left}
+.lang-menu button[aria-checked="true"]{background:var(--soft);color:var(--soft-ink)}
+.lang-menu button[aria-checked="true"]::after{content:"✓"}
+/* mascot */
+.hello{display:flex;align-items:flex-start;gap:12px;margin-top:6px}
+.bubble-col{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;gap:8px;padding-top:6px}
+.bubble{background:var(--soft);color:var(--soft-ink);border-radius:6px 18px 18px 18px;padding:12px 14px;font-weight:600;line-height:1.35;margin:0}
+.know-link{align-self:flex-start;min-height:36px;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--icon);text-decoration:none}
+.flip{--s:112px;--iw:92px;--ib:6px;--pop:26px;flex:0 0 var(--s);width:var(--s);height:var(--s);padding:0;border:0;background:transparent;cursor:pointer;perspective:600px;touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+.flip-in{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,.2,.2,1)}
+.flip.is-flipped .flip-in{transform:rotateY(180deg)}
+.face{display:block;position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.face.front{border-radius:999px;background:var(--soft);overflow:hidden}
+.face.front svg{width:100%;height:100%;display:block}
+.face.back{transform:rotateY(180deg)}
+.face.back .disc{display:block;position:absolute;inset:0;border-radius:999px;background:#D3E9C1}
+.face.back img{position:absolute;left:50%;bottom:var(--ib);width:var(--iw);height:auto;transform:translateX(-50%) translateY(var(--pop)) scale(.85);transition:transform .45s cubic-bezier(.34,1.56,.64,1);filter:drop-shadow(0 2px 4px rgba(22,33,15,.18))}
+.flip.is-flipped .face.back img{transform:translateX(-50%) translateY(0) scale(1);transition-delay:.3s}
+.flip.lg{--s:120px;--iw:98px;--ib:7px;--pop:28px;margin-top:18px}
+.flip.sm{--s:72px;--iw:59px;--ib:4px;--pop:16px}
+/* rows */
+.book{min-height:72px;display:flex;align-items:center;gap:14px;padding:14px 18px;margin-top:4px;background:var(--primary);color:#fff;border-radius:16px;text-decoration:none}
+.book:hover{color:#fff;filter:brightness(1.08)}
+.book .t{flex:1;display:flex;flex-direction:column}
+.book .t b{font-weight:600;font-size:18px;line-height:1.25}
+.book .t span{font-size:14px}
+.row{width:100%;min-height:64px;display:flex;align-items:center;gap:14px;padding:12px 18px;background:transparent;border:1px solid var(--line);border-radius:16px;cursor:pointer;text-align:left;text-decoration:none;color:var(--ink)}
+.row .label{flex:1;font-weight:600;font-size:17px}
+.chev{transition:transform .2s}
+[aria-expanded="true"] > .chev{transform:rotate(180deg)}
+[aria-expanded="true"] > .chev-r{transform:rotate(90deg)}
+.panel{border:1px solid var(--line);border-radius:16px;padding:4px 18px;background:var(--surface);display:flex;flex-direction:column}
+.panel.pad-b{padding-bottom:16px}
+.item{min-height:50px;display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;font-weight:600;border-bottom:1px solid var(--line);background:transparent;border-left:0;border-right:0;border-top:0;padding:0;cursor:pointer;text-align:left;width:100%;font-size:16px;color:var(--ink)}
+.item:last-child{border-bottom:0}
+.item .sub{font-weight:400;color:var(--muted)}
+.subs{padding:4px 0 8px 14px;border-bottom:1px solid var(--line);display:flex;flex-direction:column}
+.subs a{min-height:40px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:15px;color:var(--muted);text-decoration:none}
+.subs a b{font-weight:600;color:var(--icon)}
+.soft-btn{margin-top:8px;min-height:48px;display:flex;align-items:center;justify-content:center;background:var(--soft);color:var(--soft-ink);border-radius:12px;text-decoration:none;font-weight:700}
+.soft-btn:hover{color:var(--soft-ink)}
+.qa{border-top:1px solid var(--line);margin-top:6px;padding-top:18px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.qa a,.qa button{display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none;font-size:14px;color:var(--muted);background:transparent;border:0;padding:0;cursor:pointer;text-align:center}
+.qa .ic{width:60px;height:60px;border-radius:999px;background:var(--soft);display:flex;align-items:center;justify-content:center}
+.now{margin:0;padding:2px 4px;display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
+.now i{width:8px;height:8px;border-radius:999px;background:var(--icon);display:inline-block}
+.now a{font-weight:600}
+/* subpages */
+.backlink{align-self:flex-start;min-height:44px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-weight:600;font-size:15px;color:var(--muted)}
+.title{margin:0;font-size:26px;font-weight:700;letter-spacing:-.02em}
+.center{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.chat{display:flex;flex-direction:column;gap:10px;padding-top:4px}
+.me{align-self:flex-end;max-width:80%;background:var(--primary);color:#fff;border-radius:18px 6px 18px 18px;padding:10px 14px;font-size:15px;font-weight:600;margin:0;animation:pop .25s ease-out both}
+.it{align-self:flex-start;max-width:85%;background:var(--soft);color:var(--soft-ink);border-radius:6px 18px 18px 18px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;animation:pop .3s ease-out .15s both}
+.it p{margin:0;font-weight:600;line-height:1.4}
+.acts{display:flex;flex-wrap:wrap;gap:6px}
+.acts a{min-height:40px;display:inline-flex;align-items:center;padding:0 14px;background:#fff;color:#27500A;border-radius:999px;text-decoration:none;font-size:14px;font-weight:700}
+.li{align-self:flex-start;max-width:85%;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 6px 18px rgba(22,33,15,.12);animation:pop .3s ease-out .45s both}
+.li .logo{flex:0 0 36px;height:36px;border-radius:8px;background:#0A66C2;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.li span{flex:1;font-size:14px;color:var(--muted)}
+.li a{min-height:40px;display:inline-flex;align-items:center;padding:0 14px;background:var(--primary);color:#fff;border-radius:999px;text-decoration:none;font-size:14px;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}
+.chips button{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--icon);background:transparent;cursor:pointer;font-size:15px;font-weight:600}
+.link-btn{align-self:flex-end;min-height:44px;padding:0 12px;background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:14px;font-weight:600;text-decoration:underline}
+.cta{min-height:64px;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 18px;margin-top:6px;background:var(--primary);color:#fff;border-radius:16px;text-decoration:none;font-weight:600;font-size:17px;border:0;cursor:pointer;width:100%}
+.cta:hover{color:#fff;filter:brightness(1.08)}
+.still{animation:none!important}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* form */
+fieldset{margin:0;padding:0;border:0}
+legend{padding:0 0 10px;font-weight:700;font-size:15px}
+.pick{display:flex;flex-wrap:wrap;gap:8px}
+.pick label{position:relative;min-height:44px;display:inline-flex;align-items:center;gap:8px;padding:0 16px;border-radius:999px;border:1px solid var(--line);cursor:pointer;font-size:15px;font-weight:600}
+.pick input{position:absolute;opacity:0;width:1px;height:1px}
+.pick label::before{content:"+"}
+.pick label:has(input:checked){background:var(--soft);border-color:var(--soft);color:var(--soft-ink)}
+.pick label:has(input:checked)::before{content:"✓"}
+.pick label:has(input:focus-visible){outline:3px solid var(--icon);outline-offset:2px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-weight:700;font-size:15px}
+.field input{min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);font-size:16px}
+.err{margin:0;padding:12px 14px;border-radius:12px;background:#FCEBE8;color:#7A1F14;font-weight:600;font-size:15px}
+.hp{position:absolute;left:-9999px}
+.stack{display:flex;flex-direction:column;gap:14px}
+.steplabel{margin:0;font-size:13px;font-weight:600;color:var(--muted)}
+.field input.code{min-height:64px;font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:28px;font-weight:600;letter-spacing:.45em;text-align:center}
+.textbtn{min-height:44px;padding:0;background:transparent;border:0;color:var(--icon);cursor:pointer;font-size:15px;font-weight:600}
+.doc-open{font-size:14px;color:var(--icon)}
+.linkrow{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
+.linkrow:last-child{border-bottom:0}
+.linkrow .item{flex:1;border-bottom:0}
+.qrmini{flex:0 0 44px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:12px;background:transparent;cursor:pointer}
+.dialog.qrcard{padding:0;overflow:hidden;gap:0}
+.qrcard .solid{background:var(--qr);color:var(--qr-ink)}
+.qrhead{width:100%;display:flex;align-items:center;gap:12px;padding:18px 20px;background:var(--qr);color:var(--qr-ink)}
+.qrhead h2{margin:0;font-size:19px;color:inherit;text-align:left;word-break:break-word}
+.qrbadge{flex:0 0 40px;width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.qrbadge img{width:100%;height:100%;object-fit:cover}
+.qrbody{width:100%;padding:20px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.qrwrap{position:relative;padding:18px;background:#fff;border-radius:18px;box-shadow:inset 0 0 0 3px var(--qr)}
+#qrSvg svg{display:block;width:208px;height:208px}
+.qrcenter{position:absolute;left:50%;top:50%;width:54px;height:54px;transform:translate(-50%,-50%);background:#fff;border-radius:14px;padding:5px;display:flex}
+.qrcenter .dot{flex:1;border-radius:10px;background:var(--qr);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.qrcenter img{width:100%;height:100%;object-fit:contain}
+.qrurl{margin:0;font-weight:600;font-size:15px;text-align:center;word-break:break-all}
+.qrrow{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qrbtn{display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--ink)}
+.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:4px}
+.photos a{display:block;border-radius:12px;overflow:hidden;background:var(--soft)}
+.photos a:first-child:nth-last-child(odd){grid-column:1/-1}
+.photos img{display:block;width:100%;height:100%;aspect-ratio:4/3;object-fit:cover}
+/* log */
+.post{border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:var(--surface);display:flex;flex-direction:column;gap:6px}
+.post time{font-size:13px;color:var(--muted)}
+.post h2{margin:0;font-size:18px}
+.post p{margin:0;white-space:pre-line}
+/* dialogs */
+.scrim{position:fixed;inset:0;background:var(--scrim);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.scrim.bottom{align-items:flex-end;padding-bottom:calc(16px + env(safe-area-inset-bottom))}
+.dialog{width:100%;max-width:340px;background:var(--surface);color:var(--ink);border-radius:24px;padding:24px;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.scrim.bottom .dialog{max-width:420px;align-items:stretch;text-align:left}
+.dialog h2{margin:0;font-size:19px;font-weight:700}
+.qrbox{padding:14px;background:#fff;border-radius:16px}
+.apps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.apps a{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px;color:var(--muted);text-decoration:none}
+.apps a span{width:52px;height:52px;border-radius:999px;background:var(--soft);color:#27500A;display:flex;align-items:center;justify-content:center;font-weight:700}
+.ghost{min-height:48px;background:transparent;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-weight:600;font-size:15px}
+.solid{min-height:48px;width:100%;background:var(--primary);color:#fff;border:0;border-radius:12px;cursor:pointer;font-weight:700;font-size:16px}
+.ld{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;color:var(--ink)}
+.ld-bg{position:absolute;inset:0;background:var(--bg)}
+.ld-glow{position:absolute;left:50%;top:50%;width:min(420px,110vw);height:min(420px,110vw);transform:translate(-50%,-62%);border-radius:50%;background:radial-gradient(circle,rgba(108,191,71,.10) 0%,rgba(108,191,71,0) 70%);pointer-events:none}
+.ld canvas{position:relative;display:block;width:min(240px,60vw);height:min(240px,60vw);transform-origin:0 0}
+.ld h1{position:relative;margin:6px 0 0;font-size:24px;font-weight:700;letter-spacing:-.01em}
+.ld p{position:relative;margin:0;font-size:16px;color:var(--muted)}
+.ld .ld-fallback{position:absolute;left:0;right:0;bottom:calc(24px + env(safe-area-inset-bottom));font-size:14px;color:var(--muted)}
+.ld .ld-fallback a{color:var(--muted)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<!-- HOME -->
+<section data-view="home" class="wrap" style="padding:0;max-width:none">
+<header class="top">
+<div class="lang">
+<button type="button" class="lang-btn" id="langBtn" aria-haspopup="menu" aria-expanded="false">
+<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+<span id="langLabel">EN</span>
+<svg class="chev" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="lang-menu" id="langMenu" role="menu" hidden></div>
+</div>
+<div class="who">
+<h1>Emily Lam</h1>
+<p data-i18n="tagline"></p>
+</div>
+</header>
+
+<div class="hello">
+<button type="button" class="flip " aria-label="Emily’s DNA. Double-tap to flip" title="Double-tap me"><span class="flip-in"><span class="face front"><svg aria-hidden="true" viewBox="0 0 100 100"><g transform="rotate(0 50 50)" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M47.97 18.62 L52.03 18.62M38.95 23.85 L61.05 23.85M37.49 29.08 L62.51 29.08M44.34 34.31 L55.66 34.31M41.28 44.77 L58.72 44.77M37.00 50.00 L63.00 50.00M41.28 55.23 L58.72 55.23M44.34 65.69 L55.66 65.69M37.49 70.92 L62.51 70.92M38.95 76.15 L61.05 76.15M47.97 81.38 L52.03 81.38" stroke="#A9D98C" stroke-width="3.4"></path><path d="M50.00 16.00 L49.33 16.28 L48.67 16.57 L48.00 16.85 L47.34 17.13 L46.68 17.42 L46.03 17.70 L45.39 17.98 L44.75 18.27 L44.12 18.55 L43.49 18.83 L42.88 19.12 L42.28 19.40 L41.69 19.68 L41.12 19.97 L40.56 20.25 L40.01 20.53 L39.48 20.82 L38.96 21.10 L38.46 21.38 L37.98 21.67 L37.52 21.95 L37.07 22.23 L36.65 22.52 L36.25 22.80 L35.87 23.08 L35.51 23.37 L35.17 23.65 L34.85 23.93 L34.56 24.22 L34.29 24.50 L34.05 24.78 L33.83 25.07 L33.64 25.35 L33.47 25.63 L33.33 25.92 L33.21 26.20 L33.12 26.48 L33.05 26.77 L33.01 27.05 L33.00 27.33 L33.01 27.62 L33.05 27.90 L33.12 28.18 L33.21 28.47 L33.33 28.75 L33.47 29.03 L33.64 29.32 L33.83 29.60 L34.05 29.88 L34.29 30.17 L34.56 30.45 L34.85 30.73 L35.17 31.02 L35.51 31.30 L35.87 31.58 L36.25 31.87 L36.65 32.15 L37.07 32.43 L37.52 32.72 L37.98 33.00 L38.46 33.28 L38.96 33.57 L39.48 33.85 L40.01 34.13 L40.56 34.42 L41.12 34.70 L41.69 34.98 L42.28 35.27 L42.88 35.55 L43.49 35.83 L44.12 36.12 L44.75 36.40 L45.39 36.68 L46.03 36.97 L46.68 37.25 L47.34 37.53 L48.00 37.82 L48.67 38.10 L49.33 38.38 L50.00 38.67 L50.67 38.95 L51.33 39.23 L52.00 39.52 L52.66 39.80 L53.32 40.08 L53.97 40.37 L54.61 40.65 L55.25 40.93 L55.88 41.22 L56.51 41.50 L57.12 41.78 L57.72 42.07 L58.31 42.35 L58.88 42.63 L59.44 42.92 L59.99 43.20 L60.52 43.48 L61.04 43.77 L61.54 44.05 L62.02 44.33 L62.48 44.62 L62.93 44.90 L63.35 45.18 L63.75 45.47 L64.13 45.75 L64.49 46.03 L64.83 46.32 L65.15 46.60 L65.44 46.88 L65.71 47.17 L65.95 47.45 L66.17 47.73 L66.36 48.02 L66.53 48.30 L66.67 48.58 L66.79 48.87 L66.88 49.15 L66.95 49.43 L66.99 49.72 L67.00 50.00 L66.99 50.28 L66.95 50.57 L66.88 50.85 L66.79 51.13 L66.67 51.42 L66.53 51.70 L66.36 51.98 L66.17 52.27 L65.95 52.55 L65.71 52.83 L65.44 53.12 L65.15 53.40 L64.83 53.68 L64.49 53.97 L64.13 54.25 L63.75 54.53 L63.35 54.82 L62.93 55.10 L62.48 55.38 L62.02 55.67 L61.54 55.95 L61.04 56.23 L60.52 56.52 L59.99 56.80 L59.44 57.08 L58.88 57.37 L58.31 57.65 L57.72 57.93 L57.12 58.22 L56.51 58.50 L55.88 58.78 L55.25 59.07 L54.61 59.35 L53.97 59.63 L53.32 59.92 L52.66 60.20 L52.00 60.48 L51.33 60.77 L50.67 61.05 L50.00 61.33 L49.33 61.62 L48.67 61.90 L48.00 62.18 L47.34 62.47 L46.68 62.75 L46.03 63.03 L45.39 63.32 L44.75 63.60 L44.12 63.88 L43.49 64.17 L42.88 64.45 L42.28 64.73 L41.69 65.02 L41.12 65.30 L40.56 65.58 L40.01 65.87 L39.48 66.15 L38.96 66.43 L38.46 66.72 L37.98 67.00 L37.52 67.28 L37.07 67.57 L36.65 67.85 L36.25 68.13 L35.87 68.42 L35.51 68.70 L35.17 68.98 L34.85 69.27 L34.56 69.55 L34.29 69.83 L34.05 70.12 L33.83 70.40 L33.64 70.68 L33.47 70.97 L33.33 71.25 L33.21 71.53 L33.12 71.82 L33.05 72.10 L33.01 72.38 L33.00 72.67 L33.01 72.95 L33.05 73.23 L33.12 73.52 L33.21 73.80 L33.33 74.08 L33.47 74.37 L33.64 74.65 L33.83 74.93 L34.05 75.22 L34.29 75.50 L34.56 75.78 L34.85 76.07 L35.17 76.35 L35.51 76.63 L35.87 76.92 L36.25 77.20 L36.65 77.48 L37.07 77.77 L37.52 78.05 L37.98 78.33 L38.46 78.62 L38.96 78.90 L39.48 79.18 L40.01 79.47 L40.56 79.75 L41.12 80.03 L41.69 80.32 L42.28 80.60 L42.88 80.88 L43.49 81.17 L44.12 81.45 L44.75 81.73 L45.39 82.02 L46.03 82.30 L46.68 82.58 L47.34 82.87 L48.00 83.15 L48.67 83.43 L49.33 83.72 L50.00 84.00" stroke="#6CBF47" stroke-width="5.5"></path><path d="M50.00 16.00 L50.67 16.28 L51.33 16.57 L52.00 16.85 L52.66 17.13 L53.32 17.42 L53.97 17.70 L54.61 17.98 L55.25 18.27 L55.88 18.55 L56.51 18.83 L57.12 19.12 L57.72 19.40 L58.31 19.68 L58.88 19.97 L59.44 20.25 L59.99 20.53 L60.52 20.82 L61.04 21.10 L61.54 21.38 L62.02 21.67 L62.48 21.95 L62.93 22.23 L63.35 22.52 L63.75 22.80 L64.13 23.08 L64.49 23.37 L64.83 23.65 L65.15 23.93 L65.44 24.22 L65.71 24.50 L65.95 24.78 L66.17 25.07 L66.36 25.35 L66.53 25.63 L66.67 25.92 L66.79 26.20 L66.88 26.48 L66.95 26.77 L66.99 27.05 L67.00 27.33 L66.99 27.62 L66.95 27.90 L66.88 28.18 L66.79 28.47 L66.67 28.75 L66.53 29.03 L66.36 29.32 L66.17 29.60 L65.95 29.88 L65.71 30.17 L65.44 30.45 L65.15 30.73 L64.83 31.02 L64.49 31.30 L64.13 31.58 L63.75 31.87 L63.35 32.15 L62.93 32.43 L62.48 32.72 L62.02 33.00 L61.54 33.28 L61.04 33.57 L60.52 33.85 L59.99 34.13 L59.44 34.42 L58.88 34.70 L58.31 34.98 L57.72 35.27 L57.12 35.55 L56.51 35.83 L55.88 36.12 L55.25 36.40 L54.61 36.68 L53.97 36.97 L53.32 37.25 L52.66 37.53 L52.00 37.82 L51.33 38.10 L50.67 38.38 L50.00 38.67 L49.33 38.95 L48.67 39.23 L48.00 39.52 L47.34 39.80 L46.68 40.08 L46.03 40.37 L45.39 40.65 L44.75 40.93 L44.12 41.22 L43.49 41.50 L42.88 41.78 L42.28 42.07 L41.69 42.35 L41.12 42.63 L40.56 42.92 L40.01 43.20 L39.48 43.48 L38.96 43.77 L38.46 44.05 L37.98 44.33 L37.52 44.62 L37.07 44.90 L36.65 45.18 L36.25 45.47 L35.87 45.75 L35.51 46.03 L35.17 46.32 L34.85 46.60 L34.56 46.88 L34.29 47.17 L34.05 47.45 L33.83 47.73 L33.64 48.02 L33.47 48.30 L33.33 48.58 L33.21 48.87 L33.12 49.15 L33.05 49.43 L33.01 49.72 L33.00 50.00 L33.01 50.28 L33.05 50.57 L33.12 50.85 L33.21 51.13 L33.33 51.42 L33.47 51.70 L33.64 51.98 L33.83 52.27 L34.05 52.55 L34.29 52.83 L34.56 53.12 L34.85 53.40 L35.17 53.68 L35.51 53.97 L35.87 54.25 L36.25 54.53 L36.65 54.82 L37.07 55.10 L37.52 55.38 L37.98 55.67 L38.46 55.95 L38.96 56.23 L39.48 56.52 L40.01 56.80 L40.56 57.08 L41.12 57.37 L41.69 57.65 L42.28 57.93 L42.88 58.22 L43.49 58.50 L44.12 58.78 L44.75 59.07 L45.39 59.35 L46.03 59.63 L46.68 59.92 L47.34 60.20 L48.00 60.48 L48.67 60.77 L49.33 61.05 L50.00 61.33 L50.67 61.62 L51.33 61.90 L52.00 62.18 L52.66 62.47 L53.32 62.75 L53.97 63.03 L54.61 63.32 L55.25 63.60 L55.88 63.88 L56.51 64.17 L57.12 64.45 L57.72 64.73 L58.31 65.02 L58.88 65.30 L59.44 65.58 L59.99 65.87 L60.52 66.15 L61.04 66.43 L61.54 66.72 L62.02 67.00 L62.48 67.28 L62.93 67.57 L63.35 67.85 L63.75 68.13 L64.13 68.42 L64.49 68.70 L64.83 68.98 L65.15 69.27 L65.44 69.55 L65.71 69.83 L65.95 70.12 L66.17 70.40 L66.36 70.68 L66.53 70.97 L66.67 71.25 L66.79 71.53 L66.88 71.82 L66.95 72.10 L66.99 72.38 L67.00 72.67 L66.99 72.95 L66.95 73.23 L66.88 73.52 L66.79 73.80 L66.67 74.08 L66.53 74.37 L66.36 74.65 L66.17 74.93 L65.95 75.22 L65.71 75.50 L65.44 75.78 L65.15 76.07 L64.83 76.35 L64.49 76.63 L64.13 76.92 L63.75 77.20 L63.35 77.48 L62.93 77.77 L62.48 78.05 L62.02 78.33 L61.54 78.62 L61.04 78.90 L60.52 79.18 L59.99 79.47 L59.44 79.75 L58.88 80.03 L58.31 80.32 L57.72 80.60 L57.12 80.88 L56.51 81.17 L55.88 81.45 L55.25 81.73 L54.61 82.02 L53.97 82.30 L53.32 82.58 L52.66 82.87 L52.00 83.15 L51.33 83.43 L50.67 83.72 L50.00 84.00" stroke="#3B6D11" stroke-width="5.5"></path></g></svg></span><span class="face back"><span class="disc"></span><img src="mascot.webp" alt="" width="184" height="261"></span></span></button>
+<div class="bubble-col">
+<p class="bubble" id="status" aria-live="polite"></p>
+<a class="know-link" href="#know"><span data-i18n="getToKnow"></span>
+<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+</div>
+</div>
+
+<a class="book" href="/meet/">
+<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M3 10h18"/></svg>
+<span class="t"><b data-i18n="book"></b><span>meet.emilylam.hk</span></span>
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+</a>
+
+<button type="button" class="row" aria-expanded="false" aria-controls="p-links">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--icon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span class="label" data-i18n="allLinks"></span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<nav class="panel" id="p-links" aria-label="Links" hidden></nav>
+
+<button type="button" class="row" aria-expanded="false" aria-controls="p-docs">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--icon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span class="label" data-i18n="docs"></span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="panel pad-b" id="p-docs" hidden>
+<div id="docsBox" style="display:flex;flex-direction:column"></div>
+<a class="soft-btn" href="#unlock" data-i18n="unlock"></a>
+</div>
+
+<button type="button" class="row" aria-expanded="false" aria-controls="p-projects">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--icon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></svg><span class="label" data-i18n="pastProjects"></span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="panel" id="p-projects" hidden>
+<a class="item" href="https://2025.igem.wiki/sustech-bio/"><span>SUSTECH-BIO <span class="sub">· iGEM 2025</span></span><span aria-hidden="true" class="muted">↗</span></a>
+<a class="item" href="https://2025.igem.wiki/hg-tokyo/"><span>HG-Tokyo <span class="sub">· iGEM 2025</span></span><span aria-hidden="true" class="muted">↗</span></a>
+<a class="item" href="https://teams.igem.org/5063"><span>HK-United <span class="sub">· iGEM 2024</span></span><span aria-hidden="true" class="muted">↗</span></a>
+<a class="item" href="https://2024.igem.wiki/hk-joint-school/"><span>HK-Joint-School <span class="sub">· iGEM 2024</span></span><span aria-hidden="true" class="muted">↗</span></a>
+<a class="item" href="https://2023.igem.wiki/hk-joint-school/index.html"><span>HK-Joint-School <span class="sub">· iGEM 2023</span></span><span aria-hidden="true" class="muted">↗</span></a>
+<div id="projDocs" style="display:contents"></div>
+</div>
+
+<button type="button" class="row" aria-expanded="false" aria-controls="p-events">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--icon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg><span class="label" data-i18n="pastEvents"></span><svg class="chev" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div class="panel" id="p-events" hidden>
+<a class="item" style="min-height:64px" href="mailto:me@emilylam.hk?subject=Your%20past%20events">
+<span style="display:flex;flex-direction:column"><span data-i18n="events15"></span><span class="sub" style="font-size:14px" data-i18n="eventsEmail"></span></span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--icon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+</a>
+</div>
+
+<div class="qa">
+<a href="https://wa.me/85293009116"><span class="ic"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#27500A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.7-4.6A8.5 8.5 0 1 1 8 19.6z"/></svg></span>WhatsApp</a>
+<a href="mailto:me@emilylam.hk"><span class="ic"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#27500A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span data-i18n="email"></span></a>
+<button type="button" id="shareBtn"><span class="ic"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#27500A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M8.7 10.7l6.6-3.4"/><path d="M8.7 13.3l6.6 3.4"/></svg></span><span data-i18n="share"></span></button>
+<button type="button" id="qrBtn"><span class="ic"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#27500A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M17 17h4v4h-4"/></svg></span><span data-i18n="qr"></span></button>
+</div>
+
+<a class="row" href="#log" style="min-height:56px;margin-top:8px">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--icon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4h11a2 2 0 0 1 2 2v14H8a2 2 0 0 1-2-2z"/><path d="M6 18a2 2 0 0 1 2-2h11"/><path d="M10 8h5"/></svg>
+<span class="label" style="font-size:16px" data-i18n="log"></span>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+</a>
+<p class="now"><i aria-hidden="true"></i><span><span data-i18n="nowPre"></span><a href="https://bufferbox.ing">Buffer Box</a><span data-i18n="nowPost"></span></span></p>
+</section>
+
+<!-- KNOW EMILY -->
+<section data-view="know" class="wrap" style="padding:8px 0 0;max-width:none;gap:18px" hidden>
+<a class="backlink" href="#" data-i18n="back"></a>
+<header class="center">
+<button type="button" class="flip lg" aria-label="Emily’s DNA. Double-tap to flip" title="Double-tap me"><span class="flip-in"><span class="face front"><svg aria-hidden="true" viewBox="0 0 100 100"><g transform="rotate(0 50 50)" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M47.97 18.62 L52.03 18.62M38.95 23.85 L61.05 23.85M37.49 29.08 L62.51 29.08M44.34 34.31 L55.66 34.31M41.28 44.77 L58.72 44.77M37.00 50.00 L63.00 50.00M41.28 55.23 L58.72 55.23M44.34 65.69 L55.66 65.69M37.49 70.92 L62.51 70.92M38.95 76.15 L61.05 76.15M47.97 81.38 L52.03 81.38" stroke="#A9D98C" stroke-width="3.4"></path><path d="M50.00 16.00 L49.33 16.28 L48.67 16.57 L48.00 16.85 L47.34 17.13 L46.68 17.42 L46.03 17.70 L45.39 17.98 L44.75 18.27 L44.12 18.55 L43.49 18.83 L42.88 19.12 L42.28 19.40 L41.69 19.68 L41.12 19.97 L40.56 20.25 L40.01 20.53 L39.48 20.82 L38.96 21.10 L38.46 21.38 L37.98 21.67 L37.52 21.95 L37.07 22.23 L36.65 22.52 L36.25 22.80 L35.87 23.08 L35.51 23.37 L35.17 23.65 L34.85 23.93 L34.56 24.22 L34.29 24.50 L34.05 24.78 L33.83 25.07 L33.64 25.35 L33.47 25.63 L33.33 25.92 L33.21 26.20 L33.12 26.48 L33.05 26.77 L33.01 27.05 L33.00 27.33 L33.01 27.62 L33.05 27.90 L33.12 28.18 L33.21 28.47 L33.33 28.75 L33.47 29.03 L33.64 29.32 L33.83 29.60 L34.05 29.88 L34.29 30.17 L34.56 30.45 L34.85 30.73 L35.17 31.02 L35.51 31.30 L35.87 31.58 L36.25 31.87 L36.65 32.15 L37.07 32.43 L37.52 32.72 L37.98 33.00 L38.46 33.28 L38.96 33.57 L39.48 33.85 L40.01 34.13 L40.56 34.42 L41.12 34.70 L41.69 34.98 L42.28 35.27 L42.88 35.55 L43.49 35.83 L44.12 36.12 L44.75 36.40 L45.39 36.68 L46.03 36.97 L46.68 37.25 L47.34 37.53 L48.00 37.82 L48.67 38.10 L49.33 38.38 L50.00 38.67 L50.67 38.95 L51.33 39.23 L52.00 39.52 L52.66 39.80 L53.32 40.08 L53.97 40.37 L54.61 40.65 L55.25 40.93 L55.88 41.22 L56.51 41.50 L57.12 41.78 L57.72 42.07 L58.31 42.35 L58.88 42.63 L59.44 42.92 L59.99 43.20 L60.52 43.48 L61.04 43.77 L61.54 44.05 L62.02 44.33 L62.48 44.62 L62.93 44.90 L63.35 45.18 L63.75 45.47 L64.13 45.75 L64.49 46.03 L64.83 46.32 L65.15 46.60 L65.44 46.88 L65.71 47.17 L65.95 47.45 L66.17 47.73 L66.36 48.02 L66.53 48.30 L66.67 48.58 L66.79 48.87 L66.88 49.15 L66.95 49.43 L66.99 49.72 L67.00 50.00 L66.99 50.28 L66.95 50.57 L66.88 50.85 L66.79 51.13 L66.67 51.42 L66.53 51.70 L66.36 51.98 L66.17 52.27 L65.95 52.55 L65.71 52.83 L65.44 53.12 L65.15 53.40 L64.83 53.68 L64.49 53.97 L64.13 54.25 L63.75 54.53 L63.35 54.82 L62.93 55.10 L62.48 55.38 L62.02 55.67 L61.54 55.95 L61.04 56.23 L60.52 56.52 L59.99 56.80 L59.44 57.08 L58.88 57.37 L58.31 57.65 L57.72 57.93 L57.12 58.22 L56.51 58.50 L55.88 58.78 L55.25 59.07 L54.61 59.35 L53.97 59.63 L53.32 59.92 L52.66 60.20 L52.00 60.48 L51.33 60.77 L50.67 61.05 L50.00 61.33 L49.33 61.62 L48.67 61.90 L48.00 62.18 L47.34 62.47 L46.68 62.75 L46.03 63.03 L45.39 63.32 L44.75 63.60 L44.12 63.88 L43.49 64.17 L42.88 64.45 L42.28 64.73 L41.69 65.02 L41.12 65.30 L40.56 65.58 L40.01 65.87 L39.48 66.15 L38.96 66.43 L38.46 66.72 L37.98 67.00 L37.52 67.28 L37.07 67.57 L36.65 67.85 L36.25 68.13 L35.87 68.42 L35.51 68.70 L35.17 68.98 L34.85 69.27 L34.56 69.55 L34.29 69.83 L34.05 70.12 L33.83 70.40 L33.64 70.68 L33.47 70.97 L33.33 71.25 L33.21 71.53 L33.12 71.82 L33.05 72.10 L33.01 72.38 L33.00 72.67 L33.01 72.95 L33.05 73.23 L33.12 73.52 L33.21 73.80 L33.33 74.08 L33.47 74.37 L33.64 74.65 L33.83 74.93 L34.05 75.22 L34.29 75.50 L34.56 75.78 L34.85 76.07 L35.17 76.35 L35.51 76.63 L35.87 76.92 L36.25 77.20 L36.65 77.48 L37.07 77.77 L37.52 78.05 L37.98 78.33 L38.46 78.62 L38.96 78.90 L39.48 79.18 L40.01 79.47 L40.56 79.75 L41.12 80.03 L41.69 80.32 L42.28 80.60 L42.88 80.88 L43.49 81.17 L44.12 81.45 L44.75 81.73 L45.39 82.02 L46.03 82.30 L46.68 82.58 L47.34 82.87 L48.00 83.15 L48.67 83.43 L49.33 83.72 L50.00 84.00" stroke="#6CBF47" stroke-width="5.5"></path><path d="M50.00 16.00 L50.67 16.28 L51.33 16.57 L52.00 16.85 L52.66 17.13 L53.32 17.42 L53.97 17.70 L54.61 17.98 L55.25 18.27 L55.88 18.55 L56.51 18.83 L57.12 19.12 L57.72 19.40 L58.31 19.68 L58.88 19.97 L59.44 20.25 L59.99 20.53 L60.52 20.82 L61.04 21.10 L61.54 21.38 L62.02 21.67 L62.48 21.95 L62.93 22.23 L63.35 22.52 L63.75 22.80 L64.13 23.08 L64.49 23.37 L64.83 23.65 L65.15 23.93 L65.44 24.22 L65.71 24.50 L65.95 24.78 L66.17 25.07 L66.36 25.35 L66.53 25.63 L66.67 25.92 L66.79 26.20 L66.88 26.48 L66.95 26.77 L66.99 27.05 L67.00 27.33 L66.99 27.62 L66.95 27.90 L66.88 28.18 L66.79 28.47 L66.67 28.75 L66.53 29.03 L66.36 29.32 L66.17 29.60 L65.95 29.88 L65.71 30.17 L65.44 30.45 L65.15 30.73 L64.83 31.02 L64.49 31.30 L64.13 31.58 L63.75 31.87 L63.35 32.15 L62.93 32.43 L62.48 32.72 L62.02 33.00 L61.54 33.28 L61.04 33.57 L60.52 33.85 L59.99 34.13 L59.44 34.42 L58.88 34.70 L58.31 34.98 L57.72 35.27 L57.12 35.55 L56.51 35.83 L55.88 36.12 L55.25 36.40 L54.61 36.68 L53.97 36.97 L53.32 37.25 L52.66 37.53 L52.00 37.82 L51.33 38.10 L50.67 38.38 L50.00 38.67 L49.33 38.95 L48.67 39.23 L48.00 39.52 L47.34 39.80 L46.68 40.08 L46.03 40.37 L45.39 40.65 L44.75 40.93 L44.12 41.22 L43.49 41.50 L42.88 41.78 L42.28 42.07 L41.69 42.35 L41.12 42.63 L40.56 42.92 L40.01 43.20 L39.48 43.48 L38.96 43.77 L38.46 44.05 L37.98 44.33 L37.52 44.62 L37.07 44.90 L36.65 45.18 L36.25 45.47 L35.87 45.75 L35.51 46.03 L35.17 46.32 L34.85 46.60 L34.56 46.88 L34.29 47.17 L34.05 47.45 L33.83 47.73 L33.64 48.02 L33.47 48.30 L33.33 48.58 L33.21 48.87 L33.12 49.15 L33.05 49.43 L33.01 49.72 L33.00 50.00 L33.01 50.28 L33.05 50.57 L33.12 50.85 L33.21 51.13 L33.33 51.42 L33.47 51.70 L33.64 51.98 L33.83 52.27 L34.05 52.55 L34.29 52.83 L34.56 53.12 L34.85 53.40 L35.17 53.68 L35.51 53.97 L35.87 54.25 L36.25 54.53 L36.65 54.82 L37.07 55.10 L37.52 55.38 L37.98 55.67 L38.46 55.95 L38.96 56.23 L39.48 56.52 L40.01 56.80 L40.56 57.08 L41.12 57.37 L41.69 57.65 L42.28 57.93 L42.88 58.22 L43.49 58.50 L44.12 58.78 L44.75 59.07 L45.39 59.35 L46.03 59.63 L46.68 59.92 L47.34 60.20 L48.00 60.48 L48.67 60.77 L49.33 61.05 L50.00 61.33 L50.67 61.62 L51.33 61.90 L52.00 62.18 L52.66 62.47 L53.32 62.75 L53.97 63.03 L54.61 63.32 L55.25 63.60 L55.88 63.88 L56.51 64.17 L57.12 64.45 L57.72 64.73 L58.31 65.02 L58.88 65.30 L59.44 65.58 L59.99 65.87 L60.52 66.15 L61.04 66.43 L61.54 66.72 L62.02 67.00 L62.48 67.28 L62.93 67.57 L63.35 67.85 L63.75 68.13 L64.13 68.42 L64.49 68.70 L64.83 68.98 L65.15 69.27 L65.44 69.55 L65.71 69.83 L65.95 70.12 L66.17 70.40 L66.36 70.68 L66.53 70.97 L66.67 71.25 L66.79 71.53 L66.88 71.82 L66.95 72.10 L66.99 72.38 L67.00 72.67 L66.99 72.95 L66.95 73.23 L66.88 73.52 L66.79 73.80 L66.67 74.08 L66.53 74.37 L66.36 74.65 L66.17 74.93 L65.95 75.22 L65.71 75.50 L65.44 75.78 L65.15 76.07 L64.83 76.35 L64.49 76.63 L64.13 76.92 L63.75 77.20 L63.35 77.48 L62.93 77.77 L62.48 78.05 L62.02 78.33 L61.54 78.62 L61.04 78.90 L60.52 79.18 L59.99 79.47 L59.44 79.75 L58.88 80.03 L58.31 80.32 L57.72 80.60 L57.12 80.88 L56.51 81.17 L55.88 81.45 L55.25 81.73 L54.61 82.02 L53.97 82.30 L53.32 82.58 L52.66 82.87 L52.00 83.15 L51.33 83.43 L50.67 83.72 L50.00 84.00" stroke="#3B6D11" stroke-width="5.5"></path></g></svg></span><span class="face back"><span class="disc"></span><img src="mascot.webp" alt="" width="184" height="261"></span></span></button>
+<h1 class="title" data-i18n="title"></h1>
+</header>
+<div class="chat" id="chat" role="log" aria-live="polite" aria-label="Conversation with Emily’s DNA"></div>
+<div class="chips" id="chips"></div>
+<button type="button" class="link-btn" id="restart" data-i18n="restart" hidden></button>
+<a class="cta" href="/meet/">
+<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M3 10h18"/></svg>
+<span data-i18n="book"></span></a>
+</section>
+
+<!-- DOCUMENTS: unlock + request -->
+<section data-view="unlock" class="wrap" style="padding:8px 0 0;max-width:none;gap:20px" hidden>
+<a class="backlink" href="#" id="uBack" data-i18n="back"></a>
+<div class="hello" style="margin-top:12px">
+<button type="button" class="flip sm" aria-label="Emily’s DNA. Double-tap to flip" title="Double-tap me"><span class="flip-in"><span class="face front"><svg aria-hidden="true" viewBox="0 0 100 100"><g transform="rotate(0 50 50)" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M47.97 18.62 L52.03 18.62M38.95 23.85 L61.05 23.85M37.49 29.08 L62.51 29.08M44.34 34.31 L55.66 34.31M41.28 44.77 L58.72 44.77M37.00 50.00 L63.00 50.00M41.28 55.23 L58.72 55.23M44.34 65.69 L55.66 65.69M37.49 70.92 L62.51 70.92M38.95 76.15 L61.05 76.15M47.97 81.38 L52.03 81.38" stroke="#A9D98C" stroke-width="3.4"></path><path d="M50.00 16.00 L49.33 16.28 L48.67 16.57 L48.00 16.85 L47.34 17.13 L46.68 17.42 L46.03 17.70 L45.39 17.98 L44.75 18.27 L44.12 18.55 L43.49 18.83 L42.88 19.12 L42.28 19.40 L41.69 19.68 L41.12 19.97 L40.56 20.25 L40.01 20.53 L39.48 20.82 L38.96 21.10 L38.46 21.38 L37.98 21.67 L37.52 21.95 L37.07 22.23 L36.65 22.52 L36.25 22.80 L35.87 23.08 L35.51 23.37 L35.17 23.65 L34.85 23.93 L34.56 24.22 L34.29 24.50 L34.05 24.78 L33.83 25.07 L33.64 25.35 L33.47 25.63 L33.33 25.92 L33.21 26.20 L33.12 26.48 L33.05 26.77 L33.01 27.05 L33.00 27.33 L33.01 27.62 L33.05 27.90 L33.12 28.18 L33.21 28.47 L33.33 28.75 L33.47 29.03 L33.64 29.32 L33.83 29.60 L34.05 29.88 L34.29 30.17 L34.56 30.45 L34.85 30.73 L35.17 31.02 L35.51 31.30 L35.87 31.58 L36.25 31.87 L36.65 32.15 L37.07 32.43 L37.52 32.72 L37.98 33.00 L38.46 33.28 L38.96 33.57 L39.48 33.85 L40.01 34.13 L40.56 34.42 L41.12 34.70 L41.69 34.98 L42.28 35.27 L42.88 35.55 L43.49 35.83 L44.12 36.12 L44.75 36.40 L45.39 36.68 L46.03 36.97 L46.68 37.25 L47.34 37.53 L48.00 37.82 L48.67 38.10 L49.33 38.38 L50.00 38.67 L50.67 38.95 L51.33 39.23 L52.00 39.52 L52.66 39.80 L53.32 40.08 L53.97 40.37 L54.61 40.65 L55.25 40.93 L55.88 41.22 L56.51 41.50 L57.12 41.78 L57.72 42.07 L58.31 42.35 L58.88 42.63 L59.44 42.92 L59.99 43.20 L60.52 43.48 L61.04 43.77 L61.54 44.05 L62.02 44.33 L62.48 44.62 L62.93 44.90 L63.35 45.18 L63.75 45.47 L64.13 45.75 L64.49 46.03 L64.83 46.32 L65.15 46.60 L65.44 46.88 L65.71 47.17 L65.95 47.45 L66.17 47.73 L66.36 48.02 L66.53 48.30 L66.67 48.58 L66.79 48.87 L66.88 49.15 L66.95 49.43 L66.99 49.72 L67.00 50.00 L66.99 50.28 L66.95 50.57 L66.88 50.85 L66.79 51.13 L66.67 51.42 L66.53 51.70 L66.36 51.98 L66.17 52.27 L65.95 52.55 L65.71 52.83 L65.44 53.12 L65.15 53.40 L64.83 53.68 L64.49 53.97 L64.13 54.25 L63.75 54.53 L63.35 54.82 L62.93 55.10 L62.48 55.38 L62.02 55.67 L61.54 55.95 L61.04 56.23 L60.52 56.52 L59.99 56.80 L59.44 57.08 L58.88 57.37 L58.31 57.65 L57.72 57.93 L57.12 58.22 L56.51 58.50 L55.88 58.78 L55.25 59.07 L54.61 59.35 L53.97 59.63 L53.32 59.92 L52.66 60.20 L52.00 60.48 L51.33 60.77 L50.67 61.05 L50.00 61.33 L49.33 61.62 L48.67 61.90 L48.00 62.18 L47.34 62.47 L46.68 62.75 L46.03 63.03 L45.39 63.32 L44.75 63.60 L44.12 63.88 L43.49 64.17 L42.88 64.45 L42.28 64.73 L41.69 65.02 L41.12 65.30 L40.56 65.58 L40.01 65.87 L39.48 66.15 L38.96 66.43 L38.46 66.72 L37.98 67.00 L37.52 67.28 L37.07 67.57 L36.65 67.85 L36.25 68.13 L35.87 68.42 L35.51 68.70 L35.17 68.98 L34.85 69.27 L34.56 69.55 L34.29 69.83 L34.05 70.12 L33.83 70.40 L33.64 70.68 L33.47 70.97 L33.33 71.25 L33.21 71.53 L33.12 71.82 L33.05 72.10 L33.01 72.38 L33.00 72.67 L33.01 72.95 L33.05 73.23 L33.12 73.52 L33.21 73.80 L33.33 74.08 L33.47 74.37 L33.64 74.65 L33.83 74.93 L34.05 75.22 L34.29 75.50 L34.56 75.78 L34.85 76.07 L35.17 76.35 L35.51 76.63 L35.87 76.92 L36.25 77.20 L36.65 77.48 L37.07 77.77 L37.52 78.05 L37.98 78.33 L38.46 78.62 L38.96 78.90 L39.48 79.18 L40.01 79.47 L40.56 79.75 L41.12 80.03 L41.69 80.32 L42.28 80.60 L42.88 80.88 L43.49 81.17 L44.12 81.45 L44.75 81.73 L45.39 82.02 L46.03 82.30 L46.68 82.58 L47.34 82.87 L48.00 83.15 L48.67 83.43 L49.33 83.72 L50.00 84.00" stroke="#6CBF47" stroke-width="5.5"></path><path d="M50.00 16.00 L50.67 16.28 L51.33 16.57 L52.00 16.85 L52.66 17.13 L53.32 17.42 L53.97 17.70 L54.61 17.98 L55.25 18.27 L55.88 18.55 L56.51 18.83 L57.12 19.12 L57.72 19.40 L58.31 19.68 L58.88 19.97 L59.44 20.25 L59.99 20.53 L60.52 20.82 L61.04 21.10 L61.54 21.38 L62.02 21.67 L62.48 21.95 L62.93 22.23 L63.35 22.52 L63.75 22.80 L64.13 23.08 L64.49 23.37 L64.83 23.65 L65.15 23.93 L65.44 24.22 L65.71 24.50 L65.95 24.78 L66.17 25.07 L66.36 25.35 L66.53 25.63 L66.67 25.92 L66.79 26.20 L66.88 26.48 L66.95 26.77 L66.99 27.05 L67.00 27.33 L66.99 27.62 L66.95 27.90 L66.88 28.18 L66.79 28.47 L66.67 28.75 L66.53 29.03 L66.36 29.32 L66.17 29.60 L65.95 29.88 L65.71 30.17 L65.44 30.45 L65.15 30.73 L64.83 31.02 L64.49 31.30 L64.13 31.58 L63.75 31.87 L63.35 32.15 L62.93 32.43 L62.48 32.72 L62.02 33.00 L61.54 33.28 L61.04 33.57 L60.52 33.85 L59.99 34.13 L59.44 34.42 L58.88 34.70 L58.31 34.98 L57.72 35.27 L57.12 35.55 L56.51 35.83 L55.88 36.12 L55.25 36.40 L54.61 36.68 L53.97 36.97 L53.32 37.25 L52.66 37.53 L52.00 37.82 L51.33 38.10 L50.67 38.38 L50.00 38.67 L49.33 38.95 L48.67 39.23 L48.00 39.52 L47.34 39.80 L46.68 40.08 L46.03 40.37 L45.39 40.65 L44.75 40.93 L44.12 41.22 L43.49 41.50 L42.88 41.78 L42.28 42.07 L41.69 42.35 L41.12 42.63 L40.56 42.92 L40.01 43.20 L39.48 43.48 L38.96 43.77 L38.46 44.05 L37.98 44.33 L37.52 44.62 L37.07 44.90 L36.65 45.18 L36.25 45.47 L35.87 45.75 L35.51 46.03 L35.17 46.32 L34.85 46.60 L34.56 46.88 L34.29 47.17 L34.05 47.45 L33.83 47.73 L33.64 48.02 L33.47 48.30 L33.33 48.58 L33.21 48.87 L33.12 49.15 L33.05 49.43 L33.01 49.72 L33.00 50.00 L33.01 50.28 L33.05 50.57 L33.12 50.85 L33.21 51.13 L33.33 51.42 L33.47 51.70 L33.64 51.98 L33.83 52.27 L34.05 52.55 L34.29 52.83 L34.56 53.12 L34.85 53.40 L35.17 53.68 L35.51 53.97 L35.87 54.25 L36.25 54.53 L36.65 54.82 L37.07 55.10 L37.52 55.38 L37.98 55.67 L38.46 55.95 L38.96 56.23 L39.48 56.52 L40.01 56.80 L40.56 57.08 L41.12 57.37 L41.69 57.65 L42.28 57.93 L42.88 58.22 L43.49 58.50 L44.12 58.78 L44.75 59.07 L45.39 59.35 L46.03 59.63 L46.68 59.92 L47.34 60.20 L48.00 60.48 L48.67 60.77 L49.33 61.05 L50.00 61.33 L50.67 61.62 L51.33 61.90 L52.00 62.18 L52.66 62.47 L53.32 62.75 L53.97 63.03 L54.61 63.32 L55.25 63.60 L55.88 63.88 L56.51 64.17 L57.12 64.45 L57.72 64.73 L58.31 65.02 L58.88 65.30 L59.44 65.58 L59.99 65.87 L60.52 66.15 L61.04 66.43 L61.54 66.72 L62.02 67.00 L62.48 67.28 L62.93 67.57 L63.35 67.85 L63.75 68.13 L64.13 68.42 L64.49 68.70 L64.83 68.98 L65.15 69.27 L65.44 69.55 L65.71 69.83 L65.95 70.12 L66.17 70.40 L66.36 70.68 L66.53 70.97 L66.67 71.25 L66.79 71.53 L66.88 71.82 L66.95 72.10 L66.99 72.38 L67.00 72.67 L66.99 72.95 L66.95 73.23 L66.88 73.52 L66.79 73.80 L66.67 74.08 L66.53 74.37 L66.36 74.65 L66.17 74.93 L65.95 75.22 L65.71 75.50 L65.44 75.78 L65.15 76.07 L64.83 76.35 L64.49 76.63 L64.13 76.92 L63.75 77.20 L63.35 77.48 L62.93 77.77 L62.48 78.05 L62.02 78.33 L61.54 78.62 L61.04 78.90 L60.52 79.18 L59.99 79.47 L59.44 79.75 L58.88 80.03 L58.31 80.32 L57.72 80.60 L57.12 80.88 L56.51 81.17 L55.88 81.45 L55.25 81.73 L54.61 82.02 L53.97 82.30 L53.32 82.58 L52.66 82.87 L52.00 83.15 L51.33 83.43 L50.67 83.72 L50.00 84.00" stroke="#3B6D11" stroke-width="5.5"></path></g></svg></span><span class="face back"><span class="disc"></span><img src="mascot.webp" alt="" width="184" height="261"></span></span></button>
+<p class="bubble" id="uBubble" style="flex:1;margin-top:6px" aria-live="polite"></p>
+</div>
+
+<div id="uSteps" style="display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;flex-direction:column;gap:4px">
+<p class="steplabel" id="uStep"></p>
+<h1 class="title" id="uTitle"></h1>
+</div>
+<form id="uEmail" class="stack" novalidate>
+<div class="field"><label for="u-email" data-i18n="yourEmail"></label><input id="u-email" type="email" autocomplete="email" required></div>
+<p class="muted" style="margin:0;font-size:14px" data-i18n="privacyNote"></p>
+<button type="submit" class="cta" style="margin-top:0;font-weight:700" data-i18n="sendCode"></button>
+</form>
+<form id="uCode" class="stack" novalidate hidden>
+<p class="muted" style="margin:0"><span data-i18n="sentTo"></span> <strong id="uEmailShow" style="color:var(--ink)"></strong></p>
+<div class="field"><label for="u-code" data-i18n="codeLabel"></label><input id="u-code" class="code" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="••••••"></div>
+<button type="submit" class="cta" style="margin-top:0;font-weight:700" data-i18n="verify"></button>
+<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px">
+<button type="button" class="textbtn" id="uResend" data-i18n="resend"></button>
+<button type="button" class="textbtn muted" id="uChange" data-i18n="changeEmail"></button>
+</div>
+</form>
+<form id="uPw" class="stack" novalidate hidden>
+<p class="muted" style="margin:0" data-i18n="pwIntro"></p>
+<div class="field"><label for="u-pw" data-i18n="pwLabel"></label>
+<div style="display:flex;gap:8px"><input id="u-pw" type="password" autocomplete="current-password" style="flex:1;min-width:0"><button type="button" class="ghost" id="uShow" style="min-width:68px;min-height:52px" data-i18n="show"></button></div></div>
+<button type="submit" class="cta" style="margin-top:0;font-weight:700" data-i18n="unlockBtn"></button>
+</form>
+<div id="uDone" class="stack" hidden>
+<div class="panel" id="uList"></div>
+<button type="button" class="link-btn" style="align-self:center" id="uLock" data-i18n="lockAgain"></button>
+</div>
+<p class="err" id="uErr" role="alert" hidden></p>
+<a class="row" href="#request" id="uAlt" style="min-height:60px">
+<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--icon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l16-8-6 16-2-6z"/></svg>
+<span style="flex:1;display:flex;flex-direction:column"><b style="font-weight:700" data-i18n="noPw"></b><span class="muted" style="font-size:14px" data-i18n="noPwSub"></span></span>
+</a>
+</div>
+
+<div id="reqWrap" hidden>
+<div id="reqForm">
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:20px">
+<h1 class="title" data-i18n="reqTitle"></h1>
+<p class="muted" style="margin:0" data-i18n="unlockBody"></p>
+</div>
+<form id="requestForm" novalidate style="display:flex;flex-direction:column;gap:20px">
+<p class="hp"><label>Leave empty <input name="bot" tabindex="-1" autocomplete="off"></label></p>
+<fieldset>
+<legend data-i18n="which"></legend>
+<div class="pick" id="docPick"></div>
+</fieldset>
+<div class="field"><label for="rq-name" data-i18n="yourName"></label><input id="rq-name" name="name" type="text" autocomplete="name" required></div>
+<div class="field"><label for="rq-email" data-i18n="yourEmail"></label><input id="rq-email" name="email" type="email" autocomplete="email" required></div>
+<div class="field"><label for="rq-org" data-i18n="org"></label><input id="rq-org" name="organisation" type="text" autocomplete="organization"></div>
+<p class="muted" style="margin:0;font-size:14px" data-i18n="privacyNote"></p>
+<p class="err" id="reqErr" role="alert" hidden></p>
+<button type="submit" class="cta" style="margin-top:0;font-weight:700" id="reqSend" data-i18n="send"></button>
+</form>
+</div>
+<div id="reqDone" class="center" style="gap:16px;padding-top:12px" hidden>
+<p class="muted" style="margin:0" id="reqDoneText"></p>
+<a class="cta" href="#" data-i18n="backHome"></a>
+</div>
+</div>
+</section>
+
+<!-- LOG -->
+<section data-view="log" class="wrap" style="padding:8px 0 0;max-width:none;gap:18px" hidden>
+<a class="backlink" href="#" data-i18n="back"></a>
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px"><h1 class="title" data-i18n="log"></h1><button type="button" class="ghost" id="logQr" style="min-height:44px;padding:0 14px;display:inline-flex;align-items:center;gap:8px"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M17 17h4v4h-4"/></svg><span data-i18n="qr"></span></button></div>
+<div id="posts" style="display:flex;flex-direction:column;gap:12px"></div>
+</section>
+
+</main>
+
+<!-- QR -->
+<div class="scrim" id="qrDialog" hidden>
+<div class="dialog qrcard" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+<div class="qrhead" id="qrHead"><span class="qrbadge" id="qrBadge" aria-hidden="true"></span><h2 id="qrTitle"></h2></div>
+<div class="qrbody">
+<div class="qrwrap"><div id="qrSvg"></div><span class="qrcenter" id="qrCenter" aria-hidden="true"></span></div>
+<p class="qrurl" id="qrUrl"></p>
+<div class="qrrow"><a class="ghost qrbtn" id="qrOpen" target="_blank" rel="noopener" data-i18n="openLink"></a><button type="button" class="ghost qrbtn" id="qrCopy"></button></div>
+<button type="button" class="solid" data-close data-i18n="done"></button>
+</div>
+</div>
+</div>
+
+<!-- SHARE -->
+<div class="scrim bottom" id="shareDialog" hidden>
+<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="shareTitle">
+<h2 id="shareTitle" data-i18n="shareTitle"></h2>
+<div class="apps">
+<a href="https://wa.me/?text=Emily%20Lam%20%E2%80%94%20https%3A%2F%2Femilylam.hk"><span>WA</span>WhatsApp</a>
+<a href="https://t.me/share/url?url=https%3A%2F%2Femilylam.hk&amp;text=Emily%20Lam"><span>TG</span>Telegram</a>
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Femilylam.hk"><span>in</span>LinkedIn</a>
+<a href="mailto:?subject=Emily%20Lam&amp;body=https%3A%2F%2Femilylam.hk"><span>@</span><span style="width:auto;height:auto;background:none;color:inherit;font-weight:400" data-i18n="email"></span></a>
+</div>
+<button type="button" class="ghost" id="copyLink"></button>
+<button type="button" class="solid" data-close data-i18n="done"></button>
+</div>
+</div>
+
+<script>
+// Copyright (c) 2009 Kazuhiko Arase
+// Licensed under the MIT license:
+var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],f={},c=function(t,r){o=function(t){for(var r=new Array(t),e=0;e<t;e+=1){r[e]=new Array(t);for(var n=0;n<t;n+=1)r[e][n]=null}return r}(i=4*e+17),l(0,0),l(i-7,0),l(0,i-7),s(),h(),d(t,r),e>=7&&v(t),null==a&&(a=p(e,n,u)),w(a,r)},l=function(t,r){for(var e=-1;e<=7;e+=1)if(!(t+e<=-1||i<=t+e))for(var n=-1;n<=7;n+=1)r+n<=-1||i<=r+n||(o[t+e][r+n]=0<=e&&e<=6&&(0==n||6==n)||0<=n&&n<=6&&(0==e||6==e)||2<=e&&e<=4&&2<=n&&n<=4)},h=function(){for(var t=8;t<i-8;t+=1)null==o[t][6]&&(o[t][6]=t%2==0);for(var r=8;r<i-8;r+=1)null==o[6][r]&&(o[6][r]=r%2==0)},s=function(){for(var t=B.getPatternPosition(e),r=0;r<t.length;r+=1)for(var n=0;n<t.length;n+=1){var i=t[r],a=t[n];if(null==o[i][a])for(var u=-2;u<=2;u+=1)for(var f=-2;f<=2;f+=1)o[i+u][a+f]=-2==u||2==u||-2==f||2==f||0==u&&0==f}},v=function(t){for(var r=B.getBCHTypeNumber(e),n=0;n<18;n+=1){var a=!t&&1==(r>>n&1);o[Math.floor(n/3)][n%3+i-8-3]=a}for(n=0;n<18;n+=1){a=!t&&1==(r>>n&1);o[n%3+i-8-3][Math.floor(n/3)]=a}},d=function(t,r){for(var e=n<<3|r,a=B.getBCHTypeInfo(e),u=0;u<15;u+=1){var f=!t&&1==(a>>u&1);u<6?o[u][8]=f:u<8?o[u+1][8]=f:o[i-15+u][8]=f}for(u=0;u<15;u+=1){f=!t&&1==(a>>u&1);u<8?o[8][i-u-1]=f:u<9?o[8][15-u-1+1]=f:o[8][15-u-1]=f}o[i-8][8]=!t},w=function(t,r){for(var e=-1,n=i-1,a=7,u=0,f=B.getMaskFunction(r),c=i-1;c>0;c-=2)for(6==c&&(c-=1);;){for(var g=0;g<2;g+=1)if(null==o[n][c-g]){var l=!1;u<t.length&&(l=1==(t[u]>>>a&1)),f(n,c-g)&&(l=!l),o[n][c-g]=l,-1==(a-=1)&&(u+=1,a=7)}if((n+=e)<0||i<=n){n-=e,e=-e;break}}},p=function(t,r,e){for(var n=A.getRSBlocks(t,r),o=b(),i=0;i<e.length;i+=1){var a=e[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var u=0;for(i=0;i<n.length;i+=1)u+=n[i].dataCount;if(o.getLengthInBits()>8*u)throw"code length overflow. ("+o.getLengthInBits()+">"+8*u+")";for(o.getLengthInBits()+4<=8*u&&o.put(0,4);o.getLengthInBits()%8!=0;)o.putBit(!1);for(;!(o.getLengthInBits()>=8*u||(o.put(236,8),o.getLengthInBits()>=8*u));)o.put(17,8);return function(t,r){for(var e=0,n=0,o=0,i=new Array(r.length),a=new Array(r.length),u=0;u<r.length;u+=1){var f=r[u].dataCount,c=r[u].totalCount-f;n=Math.max(n,f),o=Math.max(o,c),i[u]=new Array(f);for(var g=0;g<i[u].length;g+=1)i[u][g]=255&t.getBuffer()[g+e];e+=f;var l=B.getErrorCorrectPolynomial(c),h=k(i[u],l.getLength()-1).mod(l);for(a[u]=new Array(l.getLength()-1),g=0;g<a[u].length;g+=1){var s=g+h.getLength()-a[u].length;a[u][g]=s>=0?h.getAt(s):0}}var v=0;for(g=0;g<r.length;g+=1)v+=r[g].totalCount;var d=new Array(v),w=0;for(g=0;g<n;g+=1)for(u=0;u<r.length;u+=1)g<i[u].length&&(d[w]=i[u][g],w+=1);for(g=0;g<o;g+=1)for(u=0;u<r.length;u+=1)g<a[u].length&&(d[w]=a[u][g],w+=1);return d}(o,n)};f.addData=function(t,r){var e=null;switch(r=r||"Byte"){case"Numeric":e=M(t);break;case"Alphanumeric":e=x(t);break;case"Byte":e=m(t);break;case"Kanji":e=L(t);break;default:throw"mode:"+r}u.push(e),a=null},f.isDark=function(t,r){if(t<0||i<=t||r<0||i<=r)throw t+","+r;return o[t][r]},f.getModuleCount=function(){return i},f.make=function(){if(e<1){for(var t=1;t<40;t++){for(var r=A.getRSBlocks(t,n),o=b(),i=0;i<u.length;i++){var a=u[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var g=0;for(i=0;i<r.length;i++)g+=r[i].dataCount;if(o.getLengthInBits()<=8*g)break}e=t}c(!1,function(){for(var t=0,r=0,e=0;e<8;e+=1){c(!0,e);var n=B.getLostPoint(f);(0==e||t>n)&&(t=n,r=e)}return r}())},f.createTableTag=function(t,r){t=t||2;var e="";e+='<table style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: "+(r=void 0===r?4*t:r)+"px;",e+='">',e+="<tbody>";for(var n=0;n<f.getModuleCount();n+=1){e+="<tr>";for(var o=0;o<f.getModuleCount();o+=1)e+='<td style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: 0px;",e+=" width: "+t+"px;",e+=" height: "+t+"px;",e+=" background-color: ",e+=f.isDark(n,o)?"#000000":"#ffffff",e+=";",e+='"/>';e+="</tr>"}return e+="</tbody>",e+="</table>"},f.createSvgTag=function(t,r,e,n){var o={};"object"==typeof arguments[0]&&(t=(o=arguments[0]).cellSize,r=o.margin,e=o.alt,n=o.title),t=t||2,r=void 0===r?4*t:r,(e="string"==typeof e?{text:e}:e||{}).text=e.text||null,e.id=e.text?e.id||"qrcode-description":null,(n="string"==typeof n?{text:n}:n||{}).text=n.text||null,n.id=n.text?n.id||"qrcode-title":null;var i,a,u,c,g=f.getModuleCount()*t+2*r,l="";for(c="l"+t+",0 0,"+t+" -"+t+",0 0,-"+t+"z ",l+='<svg version="1.1" xmlns="http://www.w3.org/2000/svg"',l+=o.scalable?"":' width="'+g+'px" height="'+g+'px"',l+=' viewBox="0 0 '+g+" "+g+'" ',l+=' preserveAspectRatio="xMinYMin meet"',l+=n.text||e.text?' role="img" aria-labelledby="'+y([n.id,e.id].join(" ").trim())+'"':"",l+=">",l+=n.text?'<title id="'+y(n.id)+'">'+y(n.text)+"</title>":"",l+=e.text?'<description id="'+y(e.id)+'">'+y(e.text)+"</description>":"",l+='<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>',l+='<path d="',a=0;a<f.getModuleCount();a+=1)for(u=a*t+r,i=0;i<f.getModuleCount();i+=1)f.isDark(a,i)&&(l+="M"+(i*t+r)+","+u+c);return l+='" stroke="transparent" fill="black"/>',l+="</svg>"},f.createDataURL=function(t,r){t=t||2,r=void 0===r?4*t:r;var e=f.getModuleCount()*t+2*r,n=r,o=e-r;return I(e,e,function(r,e){if(n<=r&&r<o&&n<=e&&e<o){var i=Math.floor((r-n)/t),a=Math.floor((e-n)/t);return f.isDark(a,i)?0:1}return 1})},f.createImgTag=function(t,r,e){t=t||2,r=void 0===r?4*t:r;var n=f.getModuleCount()*t+2*r,o="";return o+="<img",o+=' src="',o+=f.createDataURL(t,r),o+='"',o+=' width="',o+=n,o+='"',o+=' height="',o+=n,o+='"',e&&(o+=' alt="',o+=y(e),o+='"'),o+="/>"};var y=function(t){for(var r="",e=0;e<t.length;e+=1){var n=t.charAt(e);switch(n){case"<":r+="&lt;";break;case">":r+="&gt;";break;case"&":r+="&amp;";break;case'"':r+="&quot;";break;default:r+=n}}return r};return f.createASCII=function(t,r){if((t=t||1)<2)return function(t){t=void 0===t?2:t;var r,e,n,o,i,a=1*f.getModuleCount()+2*t,u=t,c=a-t,g={"██":"█","█ ":"▀"," █":"▄","  ":" "},l={"██":"▀","█ ":"▀"," █":" ","  ":" "},h="";for(r=0;r<a;r+=2){for(n=Math.floor((r-u)/1),o=Math.floor((r+1-u)/1),e=0;e<a;e+=1)i="█",u<=e&&e<c&&u<=r&&r<c&&f.isDark(n,Math.floor((e-u)/1))&&(i=" "),u<=e&&e<c&&u<=r+1&&r+1<c&&f.isDark(o,Math.floor((e-u)/1))?i+=" ":i+="█",h+=t<1&&r+1>=c?l[i]:g[i];h+="\n"}return a%2&&t>0?h.substring(0,h.length-a-1)+Array(a+1).join("▀"):h.substring(0,h.length-1)}(r);t-=1,r=void 0===r?2*t:r;var e,n,o,i,a=f.getModuleCount()*t+2*r,u=r,c=a-r,g=Array(t+1).join("██"),l=Array(t+1).join("  "),h="",s="";for(e=0;e<a;e+=1){for(o=Math.floor((e-u)/t),s="",n=0;n<a;n+=1)i=1,u<=n&&n<c&&u<=e&&e<c&&f.isDark(o,Math.floor((n-u)/t))&&(i=0),s+=i?g:l;for(o=0;o<t;o+=1)h+=s+"\n"}return h.substring(0,h.length-1)},f.renderTo2dContext=function(t,r){r=r||2;for(var e=f.getModuleCount(),n=0;n<e;n++)for(var o=0;o<e;o++)t.fillStyle=f.isDark(n,o)?"black":"white",t.fillRect(n*r,o*r,r,r)},f};t.stringToBytes=(t.stringToBytesFuncs={default:function(t){for(var r=[],e=0;e<t.length;e+=1){var n=t.charCodeAt(e);r.push(255&n)}return r}}).default,t.createStringToBytes=function(t,r){var e=function(){for(var e=S(t),n=function(){var t=e.read();if(-1==t)throw"eof";return t},o=0,i={};;){var a=e.read();if(-1==a)break;var u=n(),f=n()<<8|n();i[String.fromCharCode(a<<8|u)]=f,o+=1}if(o!=r)throw o+" != "+r;return i}(),n="?".charCodeAt(0);return function(t){for(var r=[],o=0;o<t.length;o+=1){var i=t.charCodeAt(o);if(i<128)r.push(i);else{var a=e[t.charAt(o)];"number"==typeof a?(255&a)==a?r.push(a):(r.push(a>>>8),r.push(255&a)):r.push(n)}}return r}};var r,e,n,o,i,a=1,u=2,f=4,c=8,g={L:1,M:0,Q:3,H:2},l=0,h=1,s=2,v=3,d=4,w=5,p=6,y=7,B=(r=[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]],e=1335,n=7973,i=function(t){for(var r=0;0!=t;)r+=1,t>>>=1;return r},(o={}).getBCHTypeInfo=function(t){for(var r=t<<10;i(r)-i(e)>=0;)r^=e<<i(r)-i(e);return 21522^(t<<10|r)},o.getBCHTypeNumber=function(t){for(var r=t<<12;i(r)-i(n)>=0;)r^=n<<i(r)-i(n);return t<<12|r},o.getPatternPosition=function(t){return r[t-1]},o.getMaskFunction=function(t){switch(t){case l:return function(t,r){return(t+r)%2==0};case h:return function(t,r){return t%2==0};case s:return function(t,r){return r%3==0};case v:return function(t,r){return(t+r)%3==0};case d:return function(t,r){return(Math.floor(t/2)+Math.floor(r/3))%2==0};case w:return function(t,r){return t*r%2+t*r%3==0};case p:return function(t,r){return(t*r%2+t*r%3)%2==0};case y:return function(t,r){return(t*r%3+(t+r)%2)%2==0};default:throw"bad maskPattern:"+t}},o.getErrorCorrectPolynomial=function(t){for(var r=k([1],0),e=0;e<t;e+=1)r=r.multiply(k([1,C.gexp(e)],0));return r},o.getLengthInBits=function(t,r){if(1<=r&&r<10)switch(t){case a:return 10;case u:return 9;case f:case c:return 8;default:throw"mode:"+t}else if(r<27)switch(t){case a:return 12;case u:return 11;case f:return 16;case c:return 10;default:throw"mode:"+t}else{if(!(r<41))throw"type:"+r;switch(t){case a:return 14;case u:return 13;case f:return 16;case c:return 12;default:throw"mode:"+t}}},o.getLostPoint=function(t){for(var r=t.getModuleCount(),e=0,n=0;n<r;n+=1)for(var o=0;o<r;o+=1){for(var i=0,a=t.isDark(n,o),u=-1;u<=1;u+=1)if(!(n+u<0||r<=n+u))for(var f=-1;f<=1;f+=1)o+f<0||r<=o+f||0==u&&0==f||a==t.isDark(n+u,o+f)&&(i+=1);i>5&&(e+=3+i-5)}for(n=0;n<r-1;n+=1)for(o=0;o<r-1;o+=1){var c=0;t.isDark(n,o)&&(c+=1),t.isDark(n+1,o)&&(c+=1),t.isDark(n,o+1)&&(c+=1),t.isDark(n+1,o+1)&&(c+=1),0!=c&&4!=c||(e+=3)}for(n=0;n<r;n+=1)for(o=0;o<r-6;o+=1)t.isDark(n,o)&&!t.isDark(n,o+1)&&t.isDark(n,o+2)&&t.isDark(n,o+3)&&t.isDark(n,o+4)&&!t.isDark(n,o+5)&&t.isDark(n,o+6)&&(e+=40);for(o=0;o<r;o+=1)for(n=0;n<r-6;n+=1)t.isDark(n,o)&&!t.isDark(n+1,o)&&t.isDark(n+2,o)&&t.isDark(n+3,o)&&t.isDark(n+4,o)&&!t.isDark(n+5,o)&&t.isDark(n+6,o)&&(e+=40);var g=0;for(o=0;o<r;o+=1)for(n=0;n<r;n+=1)t.isDark(n,o)&&(g+=1);return e+=Math.abs(100*g/r/r-50)/5*10},o),C=function(){for(var t=new Array(256),r=new Array(256),e=0;e<8;e+=1)t[e]=1<<e;for(e=8;e<256;e+=1)t[e]=t[e-4]^t[e-5]^t[e-6]^t[e-8];for(e=0;e<255;e+=1)r[t[e]]=e;var n={glog:function(t){if(t<1)throw"glog("+t+")";return r[t]},gexp:function(r){for(;r<0;)r+=255;for(;r>=256;)r-=255;return t[r]}};return n}();function k(t,r){if(void 0===t.length)throw t.length+"/"+r;var e=function(){for(var e=0;e<t.length&&0==t[e];)e+=1;for(var n=new Array(t.length-e+r),o=0;o<t.length-e;o+=1)n[o]=t[o+e];return n}(),n={getAt:function(t){return e[t]},getLength:function(){return e.length},multiply:function(t){for(var r=new Array(n.getLength()+t.getLength()-1),e=0;e<n.getLength();e+=1)for(var o=0;o<t.getLength();o+=1)r[e+o]^=C.gexp(C.glog(n.getAt(e))+C.glog(t.getAt(o)));return k(r,0)},mod:function(t){if(n.getLength()-t.getLength()<0)return n;for(var r=C.glog(n.getAt(0))-C.glog(t.getAt(0)),e=new Array(n.getLength()),o=0;o<n.getLength();o+=1)e[o]=n.getAt(o);for(o=0;o<t.getLength();o+=1)e[o]^=C.gexp(C.glog(t.getAt(o))+r);return k(e,0).mod(t)}};return n}var A=function(){var t=[[1,26,19],[1,26,16],[1,26,13],[1,26,9],[1,44,34],[1,44,28],[1,44,22],[1,44,16],[1,70,55],[1,70,44],[2,35,17],[2,35,13],[1,100,80],[2,50,32],[2,50,24],[4,25,9],[1,134,108],[2,67,43],[2,33,15,2,34,16],[2,33,11,2,34,12],[2,86,68],[4,43,27],[4,43,19],[4,43,15],[2,98,78],[4,49,31],[2,32,14,4,33,15],[4,39,13,1,40,14],[2,121,97],[2,60,38,2,61,39],[4,40,18,2,41,19],[4,40,14,2,41,15],[2,146,116],[3,58,36,2,59,37],[4,36,16,4,37,17],[4,36,12,4,37,13],[2,86,68,2,87,69],[4,69,43,1,70,44],[6,43,19,2,44,20],[6,43,15,2,44,16],[4,101,81],[1,80,50,4,81,51],[4,50,22,4,51,23],[3,36,12,8,37,13],[2,116,92,2,117,93],[6,58,36,2,59,37],[4,46,20,6,47,21],[7,42,14,4,43,15],[4,133,107],[8,59,37,1,60,38],[8,44,20,4,45,21],[12,33,11,4,34,12],[3,145,115,1,146,116],[4,64,40,5,65,41],[11,36,16,5,37,17],[11,36,12,5,37,13],[5,109,87,1,110,88],[5,65,41,5,66,42],[5,54,24,7,55,25],[11,36,12,7,37,13],[5,122,98,1,123,99],[7,73,45,3,74,46],[15,43,19,2,44,20],[3,45,15,13,46,16],[1,135,107,5,136,108],[10,74,46,1,75,47],[1,50,22,15,51,23],[2,42,14,17,43,15],[5,150,120,1,151,121],[9,69,43,4,70,44],[17,50,22,1,51,23],[2,42,14,19,43,15],[3,141,113,4,142,114],[3,70,44,11,71,45],[17,47,21,4,48,22],[9,39,13,16,40,14],[3,135,107,5,136,108],[3,67,41,13,68,42],[15,54,24,5,55,25],[15,43,15,10,44,16],[4,144,116,4,145,117],[17,68,42],[17,50,22,6,51,23],[19,46,16,6,47,17],[2,139,111,7,140,112],[17,74,46],[7,54,24,16,55,25],[34,37,13],[4,151,121,5,152,122],[4,75,47,14,76,48],[11,54,24,14,55,25],[16,45,15,14,46,16],[6,147,117,4,148,118],[6,73,45,14,74,46],[11,54,24,16,55,25],[30,46,16,2,47,17],[8,132,106,4,133,107],[8,75,47,13,76,48],[7,54,24,22,55,25],[22,45,15,13,46,16],[10,142,114,2,143,115],[19,74,46,4,75,47],[28,50,22,6,51,23],[33,46,16,4,47,17],[8,152,122,4,153,123],[22,73,45,3,74,46],[8,53,23,26,54,24],[12,45,15,28,46,16],[3,147,117,10,148,118],[3,73,45,23,74,46],[4,54,24,31,55,25],[11,45,15,31,46,16],[7,146,116,7,147,117],[21,73,45,7,74,46],[1,53,23,37,54,24],[19,45,15,26,46,16],[5,145,115,10,146,116],[19,75,47,10,76,48],[15,54,24,25,55,25],[23,45,15,25,46,16],[13,145,115,3,146,116],[2,74,46,29,75,47],[42,54,24,1,55,25],[23,45,15,28,46,16],[17,145,115],[10,74,46,23,75,47],[10,54,24,35,55,25],[19,45,15,35,46,16],[17,145,115,1,146,116],[14,74,46,21,75,47],[29,54,24,19,55,25],[11,45,15,46,46,16],[13,145,115,6,146,116],[14,74,46,23,75,47],[44,54,24,7,55,25],[59,46,16,1,47,17],[12,151,121,7,152,122],[12,75,47,26,76,48],[39,54,24,14,55,25],[22,45,15,41,46,16],[6,151,121,14,152,122],[6,75,47,34,76,48],[46,54,24,10,55,25],[2,45,15,64,46,16],[17,152,122,4,153,123],[29,74,46,14,75,47],[49,54,24,10,55,25],[24,45,15,46,46,16],[4,152,122,18,153,123],[13,74,46,32,75,47],[48,54,24,14,55,25],[42,45,15,32,46,16],[20,147,117,4,148,118],[40,75,47,7,76,48],[43,54,24,22,55,25],[10,45,15,67,46,16],[19,148,118,6,149,119],[18,75,47,31,76,48],[34,54,24,34,55,25],[20,45,15,61,46,16]],r=function(t,r){var e={};return e.totalCount=t,e.dataCount=r,e},e={};return e.getRSBlocks=function(e,n){var o=function(r,e){switch(e){case g.L:return t[4*(r-1)+0];case g.M:return t[4*(r-1)+1];case g.Q:return t[4*(r-1)+2];case g.H:return t[4*(r-1)+3];default:return}}(e,n);if(void 0===o)throw"bad rs block @ typeNumber:"+e+"/errorCorrectionLevel:"+n;for(var i=o.length/3,a=[],u=0;u<i;u+=1)for(var f=o[3*u+0],c=o[3*u+1],l=o[3*u+2],h=0;h<f;h+=1)a.push(r(c,l));return a},e}(),b=function(){var t=[],r=0,e={getBuffer:function(){return t},getAt:function(r){var e=Math.floor(r/8);return 1==(t[e]>>>7-r%8&1)},put:function(t,r){for(var n=0;n<r;n+=1)e.putBit(1==(t>>>r-n-1&1))},getLengthInBits:function(){return r},putBit:function(e){var n=Math.floor(r/8);t.length<=n&&t.push(0),e&&(t[n]|=128>>>r%8),r+=1}};return e},M=function(t){var r=a,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+2<r.length;)t.put(o(r.substring(n,n+3)),10),n+=3;n<r.length&&(r.length-n==1?t.put(o(r.substring(n,n+1)),4):r.length-n==2&&t.put(o(r.substring(n,n+2)),7))}},o=function(t){for(var r=0,e=0;e<t.length;e+=1)r=10*r+i(t.charAt(e));return r},i=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);throw"illegal char :"+t};return n},x=function(t){var r=u,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+1<r.length;)t.put(45*o(r.charAt(n))+o(r.charAt(n+1)),11),n+=2;n<r.length&&t.put(o(r.charAt(n)),6)}},o=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);if("A"<=t&&t<="Z")return t.charCodeAt(0)-"A".charCodeAt(0)+10;switch(t){case" ":return 36;case"$":return 37;case"%":return 38;case"*":return 39;case"+":return 40;case"-":return 41;case".":return 42;case"/":return 43;case":":return 44;default:throw"illegal char :"+t}};return n},m=function(r){var e=f,n=t.stringToBytes(r),o={getMode:function(){return e},getLength:function(t){return n.length},write:function(t){for(var r=0;r<n.length;r+=1)t.put(n[r],8)}};return o},L=function(r){var e=c,n=t.stringToBytesFuncs.SJIS;if(!n)throw"sjis not supported.";!function(){var t=n("友");if(2!=t.length||38726!=(t[0]<<8|t[1]))throw"sjis not supported."}();var o=n(r),i={getMode:function(){return e},getLength:function(t){return~~(o.length/2)},write:function(t){for(var r=o,e=0;e+1<r.length;){var n=(255&r[e])<<8|255&r[e+1];if(33088<=n&&n<=40956)n-=33088;else{if(!(57408<=n&&n<=60351))throw"illegal char at "+(e+1)+"/"+n;n-=49472}n=192*(n>>>8&255)+(255&n),t.put(n,13),e+=2}if(e<r.length)throw"illegal char at "+(e+1)}};return i},D=function(){var t=[],r={writeByte:function(r){t.push(255&r)},writeShort:function(t){r.writeByte(t),r.writeByte(t>>>8)},writeBytes:function(t,e,n){e=e||0,n=n||t.length;for(var o=0;o<n;o+=1)r.writeByte(t[o+e])},writeString:function(t){for(var e=0;e<t.length;e+=1)r.writeByte(t.charCodeAt(e))},toByteArray:function(){return t},toString:function(){var r="";r+="[";for(var e=0;e<t.length;e+=1)e>0&&(r+=","),r+=t[e];return r+="]"}};return r},S=function(t){var r=t,e=0,n=0,o=0,i={read:function(){for(;o<8;){if(e>=r.length){if(0==o)return-1;throw"unexpected end of file./"+o}var t=r.charAt(e);if(e+=1,"="==t)return o=0,-1;t.match(/^\s$/)||(n=n<<6|a(t.charCodeAt(0)),o+=6)}var i=n>>>o-8&255;return o-=8,i}},a=function(t){if(65<=t&&t<=90)return t-65;if(97<=t&&t<=122)return t-97+26;if(48<=t&&t<=57)return t-48+52;if(43==t)return 62;if(47==t)return 63;throw"c:"+t};return i},I=function(t,r,e){for(var n=function(t,r){var e=t,n=r,o=new Array(t*r),i={setPixel:function(t,r,n){o[r*e+t]=n},write:function(t){t.writeString("GIF87a"),t.writeShort(e),t.writeShort(n),t.writeByte(128),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(255),t.writeByte(255),t.writeByte(255),t.writeString(","),t.writeShort(0),t.writeShort(0),t.writeShort(e),t.writeShort(n),t.writeByte(0);var r=a(2);t.writeByte(2);for(var o=0;r.length-o>255;)t.writeByte(255),t.writeBytes(r,o,255),o+=255;t.writeByte(r.length-o),t.writeBytes(r,o,r.length-o),t.writeByte(0),t.writeString(";")}},a=function(t){for(var r=1<<t,e=1+(1<<t),n=t+1,i=u(),a=0;a<r;a+=1)i.add(String.fromCharCode(a));i.add(String.fromCharCode(r)),i.add(String.fromCharCode(e));var f,c,g,l=D(),h=(f=l,c=0,g=0,{write:function(t,r){if(t>>>r!=0)throw"length over";for(;c+r>=8;)f.writeByte(255&(t<<c|g)),r-=8-c,t>>>=8-c,g=0,c=0;g|=t<<c,c+=r},flush:function(){c>0&&f.writeByte(g)}});h.write(r,n);var s=0,v=String.fromCharCode(o[s]);for(s+=1;s<o.length;){var d=String.fromCharCode(o[s]);s+=1,i.contains(v+d)?v+=d:(h.write(i.indexOf(v),n),i.size()<4095&&(i.size()==1<<n&&(n+=1),i.add(v+d)),v=d)}return h.write(i.indexOf(v),n),h.write(e,n),h.flush(),l.toByteArray()},u=function(){var t={},r=0,e={add:function(n){if(e.contains(n))throw"dup key:"+n;t[n]=r,r+=1},size:function(){return r},indexOf:function(r){return t[r]},contains:function(r){return void 0!==t[r]}};return e};return i}(t,r),o=0;o<r;o+=1)for(var i=0;i<t;i+=1)n.setPixel(i,o,e(i,o));var a=D();n.write(a);for(var u=function(){var t=0,r=0,e=0,n="",o={},i=function(t){n+=String.fromCharCode(a(63&t))},a=function(t){if(t<0);else{if(t<26)return 65+t;if(t<52)return t-26+97;if(t<62)return t-52+48;if(62==t)return 43;if(63==t)return 47}throw"n:"+t};return o.writeByte=function(n){for(t=t<<8|255&n,r+=8,e+=1;r>=6;)i(t>>>r-6),r-=6},o.flush=function(){if(r>0&&(i(t<<6-r),t=0,r=0),e%3!=0)for(var o=3-e%3,a=0;a<o;a+=1)n+="="},o.toString=function(){return n},o}(),f=a.toByteArray(),c=0;c<f.length;c+=1)u.writeByte(f[c]);return u.flush(),"data:image/gif;base64,"+u};return t}();qrcode.stringToBytesFuncs["UTF-8"]=function(t){return function(t){for(var r=[],e=0;e<t.length;e++){var n=t.charCodeAt(e);n<128?r.push(n):n<2048?r.push(192|n>>6,128|63&n):n<55296||n>=57344?r.push(224|n>>12,128|n>>6&63,128|63&n):(e++,n=65536+((1023&n)<<10|1023&t.charCodeAt(e)),r.push(240|n>>18,128|n>>12&63,128|n>>6&63,128|63&n))}return r}(t)},function(t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports&&(module.exports=t())}(function(){return qrcode});
+</script>
+<script>
+/* Status and Log posts now come from your admin page (emilylam.hk/admin.html).
+   These are only used if the site can't reach it. */
+let STATUS = 'free';
+let LOG_POSTS = [];
+
+const LANGS = [["en", "English", "EN"], ["zhHant", "繁體中文", "繁"], ["zhHans", "简体中文", "简"], ["sv", "Svenska", "SV"]];
+const T = {"en": {"tagline": "Science communicator · Event producer · Drawer", "getToKnow": "Get to know Emily", "book": "Book a meeting", "allLinks": "All my links", "curProject": "• my current project", "ngo": "• the NGO I’m working at", "docs": "Emily’s documents", "resume": "Résumé", "portfolio": "Portfolio", "personal": "Personal", "occupational": "Occupational", "certs": "Certificates & prizes", "books": "Books", "unlock": "Unlock documents", "pastProjects": "Past projects", "pastEvents": "Past events", "events15": "Over 15 global educational events held", "eventsEmail": "Email Emily to understand more", "email": "Email", "share": "Share", "qr": "QR code", "log": "Log", "nowPre": "Now: working for ", "nowPost": "", "scan": "Scan to open my site", "done": "Done", "shareTitle": "Share Emily’s site", "copyLink": "Copy link", "copied": "Link copied!", "free": "Hi! I’m Emily’s DNA. Ask me anything about her.", "busy": "Hi! I’m Emily’s DNA. She’s busy this week, so book ahead!", "travel": "Hi! I’m Emily’s DNA. She’s travelling, so booking is quickest!", "heads": "Hi! I’m Emily’s DNA. She’s heads down on Buffer Box this week!", "unlockBody": "These are private. Tell Emily what you need, and she’ll email you a link if she says yes.", "unlockBubble": "Want to see something? Just ask Emily!", "which": "Which ones?", "yourName": "Your name", "yourEmail": "Email", "org": "Organisation", "send": "Send request", "sending": "Sending…", "pickOne": "Pick at least one document first.", "fillAll": "Add your name and a valid email.", "sentBubble": "Sent! Emily will take a look soon.", "sentBody": "If she approves, you’ll get a private link by email.", "mailNote": "Your email app has opened with your request. Press send to finish.", "backHome": "Back home", "docSci": "Science projects", "logEmpty": "Nothing posted yet. Check back soon.", "step1": "Step 1 of 3", "step2": "Step 2 of 3", "step3": "Step 3 of 3", "unlockedLabel": "Unlocked", "uTitle1": "Unlock Emily’s documents", "uTitle2": "Check your inbox", "uTitle3": "Enter the password", "bub1": "First, let’s check it’s really you!", "bub2": "I just sent you a code. It’s on its way!", "bub3": "Last step! Got the password from Emily?", "bub4": "You’re in! Everything’s ready to open.", "sendCode": "Send me a code", "sentTo": "We sent a 6-digit code to", "codeLabel": "6-digit code", "verify": "Verify", "resend": "Resend code", "resent": "New code sent", "changeEmail": "Change email", "pwIntro": "Email verified. Now enter the password Emily gave you.", "pwLabel": "Password", "show": "Show", "hide": "Hide", "unlockBtn": "Unlock", "open": "Open", "lockAgain": "Lock again", "noPw": "No password? Send Emily a request", "noPwSub": "She’ll review it and reply by email.", "reqTitle": "Request documents", "noFiles": "Nothing to open yet. Emily is still adding files.", "eEmail": "Enter a valid email address.", "eDigits": "Enter all 6 digits of the code.", "eCode": "That code isn’t right. Check the email and try again.", "eExpired": "That code has expired. Send a new one.", "eTooMany": "Too many tries. Wait a few minutes and try again.", "ePassword": "That password isn’t right.", "eNoPw": "Documents aren’t open yet. Send Emily a request instead.", "eServer": "Something went wrong on our side. Try again, or email me@emilylam.hk.", "eLink": "This link has expired. Send a new request.", "eSend": "We couldn’t send the email. Try again in a minute.", "openLink": "Open link", "qrFor": "QR code for", "loading": "Taking you to the booking page…", "fallback": "Click here if you are not redirected", "privacyNote": "Emily can see which documents you open with this email."}, "zhHant": {"tagline": "科學傳播者 · 活動策劃人 · 繪師", "getToKnow": "認識 Emily", "book": "預約會面", "allLinks": "我的所有連結", "curProject": "• 我目前的項目", "ngo": "• 我工作的非牟利機構", "docs": "Emily 的文件", "resume": "簡歷", "portfolio": "作品集", "personal": "個人", "occupational": "職業", "certs": "證書及獎項", "books": "著作", "unlock": "解鎖文件", "pastProjects": "過往項目", "pastEvents": "過往活動", "events15": "曾舉辦超過 15 場國際教育活動", "eventsEmail": "電郵 Emily 了解更多", "email": "電郵", "share": "分享", "qr": "QR 碼", "log": "日誌", "nowPre": "現在：為 ", "nowPost": " 工作", "scan": "掃描開啟我的網站", "done": "完成", "shareTitle": "分享 Emily 的網站", "copyLink": "複製連結", "copied": "已複製！", "free": "嗨！我是 Emily 的 DNA。想知道她的事，儘管問我！", "busy": "嗨！我是 Emily 的 DNA。她這星期很忙，記得提早預約！", "travel": "嗨！我是 Emily 的 DNA。她正在旅途中，預約最快！", "heads": "嗨！我是 Emily 的 DNA。她這星期正埋首 Buffer Box！", "unlockBody": "這些文件不公開。告訴 Emily 你需要甚麼，她批准後會把連結電郵給你。", "unlockBubble": "想看甚麼？問 Emily 吧！", "which": "需要哪些？", "yourName": "你的名字", "yourEmail": "電郵", "org": "機構", "send": "送出請求", "sending": "傳送中…", "pickOne": "請先選擇至少一份文件。", "fillAll": "請填寫名字和有效的電郵。", "sentBubble": "已送出！Emily 很快會看看。", "sentBody": "如獲批准，你會收到電郵連結。", "mailNote": "你的電郵程式已開啟並填好請求，按傳送即可完成。", "backHome": "返回主頁", "docSci": "科學項目", "logEmpty": "暫時未有內容，稍後再來看看。", "step1": "第 1 步，共 3 步", "step2": "第 2 步，共 3 步", "step3": "第 3 步，共 3 步", "unlockedLabel": "已解鎖", "uTitle1": "解鎖 Emily 的文件", "uTitle2": "查看你的電郵", "uTitle3": "輸入密碼", "bub1": "首先，確認一下是你本人！", "bub2": "驗證碼已經寄出，很快就到！", "bub3": "最後一步！拿到 Emily 給你的密碼了嗎？", "bub4": "成功了！文件都可以打開了。", "sendCode": "寄驗證碼給我", "sentTo": "我們已把 6 位數驗證碼寄到", "codeLabel": "6 位數驗證碼", "verify": "驗證", "resend": "重新發送", "resent": "已重新發送", "changeEmail": "更改電郵", "pwIntro": "電郵已驗證。請輸入 Emily 給你的密碼。", "pwLabel": "密碼", "show": "顯示", "hide": "隱藏", "unlockBtn": "解鎖", "open": "打開", "lockAgain": "重新上鎖", "noPw": "沒有密碼？向 Emily 提出請求", "noPwSub": "她會查看並以電郵回覆。", "reqTitle": "索取文件", "noFiles": "暫時沒有可打開的文件，Emily 仍在上載中。", "eEmail": "請輸入有效的電郵地址。", "eDigits": "請輸入完整的 6 位數驗證碼。", "eCode": "驗證碼不正確，請查看電郵再試。", "eExpired": "驗證碼已過期，請重新發送。", "eTooMany": "嘗試次數太多，請稍等幾分鐘再試。", "ePassword": "密碼不正確。", "eNoPw": "文件暫未開放，請改為向 Emily 提出請求。", "eServer": "系統出了問題，請再試一次，或電郵 me@emilylam.hk。", "eLink": "此連結已過期，請重新提出請求。", "eSend": "未能寄出電郵，請一分鐘後再試。", "openLink": "打開連結", "qrFor": "QR 碼：", "loading": "正在前往預約頁面…", "fallback": "如果沒有自動跳轉，請按這裏", "privacyNote": "Emily 會看到你用此電郵打開了哪些文件。"}, "zhHans": {"tagline": "科学传播者 · 活动策划人 · 绘师", "getToKnow": "认识 Emily", "book": "预约会面", "allLinks": "我的所有链接", "curProject": "• 我目前的项目", "ngo": "• 我工作的非营利组织", "docs": "Emily 的文件", "resume": "简历", "portfolio": "作品集", "personal": "个人", "occupational": "职业", "certs": "证书及奖项", "books": "著作", "unlock": "解锁文件", "pastProjects": "过往项目", "pastEvents": "过往活动", "events15": "曾举办超过 15 场国际教育活动", "eventsEmail": "发邮件给 Emily 了解更多", "email": "邮件", "share": "分享", "qr": "二维码", "log": "日志", "nowPre": "现在：为 ", "nowPost": " 工作", "scan": "扫描打开我的网站", "done": "完成", "shareTitle": "分享 Emily 的网站", "copyLink": "复制链接", "copied": "已复制！", "free": "嗨！我是 Emily 的 DNA。想了解她，尽管问我！", "busy": "嗨！我是 Emily 的 DNA。她这周很忙，记得提前预约！", "travel": "嗨！我是 Emily 的 DNA。她正在出行，预约最快！", "heads": "嗨！我是 Emily 的 DNA。她这周正埋头做 Buffer Box！", "unlockBody": "这些文件不公开。告诉 Emily 你需要什么，她批准后会把链接发邮件给你。", "unlockBubble": "想看什么？问 Emily 吧！", "which": "需要哪些？", "yourName": "你的名字", "yourEmail": "邮箱", "org": "机构", "send": "发送请求", "sending": "发送中…", "pickOne": "请先选择至少一份文件。", "fillAll": "请填写名字和有效的邮箱。", "sentBubble": "已发送！Emily 很快会查看。", "sentBody": "如获批准，你会收到邮件链接。", "mailNote": "你的邮件应用已打开并填好请求，点击发送即可完成。", "backHome": "返回主页", "docSci": "科学项目", "logEmpty": "暂时还没有内容，稍后再来看看。", "step1": "第 1 步，共 3 步", "step2": "第 2 步，共 3 步", "step3": "第 3 步，共 3 步", "unlockedLabel": "已解锁", "uTitle1": "解锁 Emily 的文件", "uTitle2": "查看你的邮箱", "uTitle3": "输入密码", "bub1": "首先，确认一下是你本人！", "bub2": "验证码已经发出，很快就到！", "bub3": "最后一步！拿到 Emily 给你的密码了吗？", "bub4": "成功了！文件都可以打开了。", "sendCode": "给我发验证码", "sentTo": "我们已把 6 位数验证码发送到", "codeLabel": "6 位数验证码", "verify": "验证", "resend": "重新发送", "resent": "已重新发送", "changeEmail": "更改邮箱", "pwIntro": "邮箱已验证。请输入 Emily 给你的密码。", "pwLabel": "密码", "show": "显示", "hide": "隐藏", "unlockBtn": "解锁", "open": "打开", "lockAgain": "重新上锁", "noPw": "没有密码？向 Emily 提出请求", "noPwSub": "她会查看并通过邮件回复。", "reqTitle": "索取文件", "noFiles": "暂时没有可打开的文件，Emily 仍在上传中。", "eEmail": "请输入有效的邮箱地址。", "eDigits": "请输入完整的 6 位数验证码。", "eCode": "验证码不正确，请查看邮件再试。", "eExpired": "验证码已过期，请重新发送。", "eTooMany": "尝试次数太多，请稍等几分钟再试。", "ePassword": "密码不正确。", "eNoPw": "文件暂未开放，请改为向 Emily 提出请求。", "eServer": "系统出了问题，请再试一次，或发邮件到 me@emilylam.hk。", "eLink": "此链接已过期，请重新提出请求。", "eSend": "未能发送邮件，请一分钟后再试。", "openLink": "打开链接", "qrFor": "二维码：", "loading": "正在前往预约页面…", "fallback": "如果没有自动跳转，请点击这里", "privacyNote": "Emily 会看到你用此邮箱打开了哪些文件。"}, "sv": {"tagline": "Vetenskapskommunikatör · Eventproducent · Tecknare", "getToKnow": "Lär känna Emily", "book": "Boka ett möte", "allLinks": "Alla mina länkar", "curProject": "• mitt nuvarande projekt", "ngo": "• ideella organisationen jag jobbar för", "docs": "Emilys dokument", "resume": "Kort CV", "portfolio": "Portfolio", "personal": "Personligt", "occupational": "Yrkesmässigt", "certs": "Intyg och priser", "books": "Böcker", "unlock": "Lås upp dokument", "pastProjects": "Tidigare projekt", "pastEvents": "Tidigare evenemang", "events15": "Över 15 internationella utbildningsevenemang", "eventsEmail": "Mejla Emily för att veta mer", "email": "E-post", "share": "Dela", "qr": "QR-kod", "log": "Logg", "nowPre": "Nu: jobbar för ", "nowPost": "", "scan": "Skanna för att öppna min sida", "done": "Klar", "shareTitle": "Dela Emilys sida", "copyLink": "Kopiera länk", "copied": "Länken kopierad!", "free": "Hej! Jag är Emilys DNA. Fråga mig vad du vill om henne.", "busy": "Hej! Jag är Emilys DNA. Hon är upptagen den här veckan, så boka i förväg!", "travel": "Hej! Jag är Emilys DNA. Hon är ute och reser, så det går snabbast att boka!", "heads": "Hej! Jag är Emilys DNA. Hon är fullt fokuserad på Buffer Box den här veckan!", "unlockBody": "De här är privata. Berätta för Emily vad du behöver, så mejlar hon en länk om hon godkänner.", "unlockBubble": "Vill du se något? Fråga Emily!", "which": "Vilka?", "yourName": "Ditt namn", "yourEmail": "E-post", "org": "Organisation", "send": "Skicka förfrågan", "sending": "Skickar…", "pickOne": "Välj minst ett dokument först.", "fillAll": "Fyll i ditt namn och en giltig e-postadress.", "sentBubble": "Skickat! Emily tittar på det snart.", "sentBody": "Om hon godkänner får du en privat länk via e-post.", "mailNote": "Din e-postapp har öppnats med förfrågan. Tryck på skicka för att bli klar.", "backHome": "Till startsidan", "docSci": "Vetenskapliga projekt", "logEmpty": "Inget publicerat än. Titta in snart igen.", "step1": "Steg 1 av 3", "step2": "Steg 2 av 3", "step3": "Steg 3 av 3", "unlockedLabel": "Upplåst", "uTitle1": "Lås upp Emilys dokument", "uTitle2": "Kolla din inkorg", "uTitle3": "Ange lösenordet", "bub1": "Först kollar vi att det verkligen är du!", "bub2": "Jag har skickat en kod. Den är på väg!", "bub3": "Sista steget! Har du fått lösenordet av Emily?", "bub4": "Du är inne! Allt är redo att öppnas.", "sendCode": "Skicka en kod", "sentTo": "Vi skickade en sexsiffrig kod till", "codeLabel": "Sexsiffrig kod", "verify": "Verifiera", "resend": "Skicka koden igen", "resent": "Ny kod skickad", "changeEmail": "Byt e-post", "pwIntro": "E-posten är verifierad. Ange nu lösenordet du fick av Emily.", "pwLabel": "Lösenord", "show": "Visa", "hide": "Dölj", "unlockBtn": "Lås upp", "open": "Öppna", "lockAgain": "Lås igen", "noPw": "Inget lösenord? Skicka en förfrågan till Emily", "noPwSub": "Hon tittar på den och svarar via e-post.", "reqTitle": "Begär dokument", "noFiles": "Inget att öppna än. Emily lägger fortfarande upp filer.", "eEmail": "Ange en giltig e-postadress.", "eDigits": "Ange alla sex siffror i koden.", "eCode": "Koden stämmer inte. Kolla mejlet och försök igen.", "eExpired": "Koden har gått ut. Skicka en ny.", "eTooMany": "För många försök. Vänta några minuter och försök igen.", "ePassword": "Lösenordet stämmer inte.", "eNoPw": "Dokumenten är inte öppna än. Skicka en förfrågan till Emily i stället.", "eServer": "Något gick fel hos oss. Försök igen eller mejla me@emilylam.hk.", "eLink": "Länken har gått ut. Skicka en ny förfrågan.", "eSend": "Vi kunde inte skicka mejlet. Försök igen om en minut.", "openLink": "Öppna länk", "qrFor": "QR-kod för", "loading": "Tar dig till bokningssidan…", "fallback": "Klicka här om du inte skickas vidare", "privacyNote": "Emily kan se vilka dokument du öppnar med den här e-postadressen."}};
+const K = {"en": {"back": "← Back", "title": "Know Emily", "foi": "Field of interest", "synbio": "Synthetic biology", "greet": "Hi! I’m Emily’s DNA. Ask me anything about her.", "more": "Want to know more?", "end": "That’s the short version! Want to meet her?", "restart": "Start over", "book": "Book a meeting", "q": [["else", "What else does she do?", "She makes science fun to learn. She writes books about DNA, and she draws and designs too."], ["best", "What’s she best at?", "Bringing people together. She’s hosted competitions, forums and symposiums around the world."], ["into", "What’s she into?", "Walking! Plus drawing, working, writing, public policy and volunteering."], ["field", "What’s her field?", "Biomedical engineering, and innovation and technology."], ["now", "What’s she working on now?", "She’s working for Buffer Box. Buffer Box plans lab experiments so they start on time. It tracks what materials you need and when to order them, and replans when a delivery slips."], ["reach", "How do I reach her?", "Right here! Pick whatever’s easiest:"]], "email": "Email"}, "zhHant": {"back": "← 返回", "title": "認識 Emily", "foi": "興趣領域", "synbio": "合成生物學", "greet": "嗨！我是 Emily 的 DNA。想知道她的事，儘管問我！", "more": "想知道更多？", "end": "大概就是這樣！想見見她嗎？", "restart": "重新開始", "book": "預約會面", "q": [["else", "她還會做甚麼？", "她讓學科學變得有趣。她寫關於 DNA 的書，也會畫畫和做設計。"], ["best", "她最擅長甚麼？", "把大家聚在一起。她曾在世界各地舉辦比賽、論壇和研討會。"], ["into", "她喜歡甚麼？", "散步！還有畫畫、工作、寫作、公共政策和做義工。"], ["field", "她的專業是甚麼？", "生物醫學工程，以及創新科技。"], ["now", "她現在在做甚麼？", "她正為 Buffer Box 工作。Buffer Box 幫實驗室規劃實驗，讓實驗準時開始：它會追蹤你需要的材料和下單時間，送貨延誤時還會重新安排。"], ["reach", "怎樣聯絡她？", "就在這裏！選最方便的方式吧："]], "email": "電郵"}, "zhHans": {"back": "← 返回", "title": "认识 Emily", "foi": "兴趣领域", "synbio": "合成生物学", "greet": "嗨！我是 Emily 的 DNA。想了解她，尽管问我！", "more": "想了解更多？", "end": "大概就是这样！想见见她吗？", "restart": "重新开始", "book": "预约会面", "q": [["else", "她还会做什么？", "她让学科学变得有趣。她写关于 DNA 的书，也会画画和做设计。"], ["best", "她最擅长什么？", "把大家聚在一起。她曾在世界各地举办比赛、论坛和研讨会。"], ["into", "她喜欢什么？", "散步！还有画画、工作、写作、公共政策和做志愿者。"], ["field", "她的专业是什么？", "生物医学工程，以及创新科技。"], ["now", "她现在在做什么？", "她正为 Buffer Box 工作。Buffer Box 帮实验室规划实验，让实验准时开始：它会跟踪你需要的材料和下单时间，送货延误时还会重新安排。"], ["reach", "怎样联系她？", "就在这里！选最方便的方式吧："]], "email": "邮件"}, "sv": {"back": "← Tillbaka", "title": "Lär känna Emily", "foi": "Intresseområde", "synbio": "Syntetisk biologi", "greet": "Hej! Jag är Emilys DNA. Fråga mig vad du vill om henne.", "more": "Vill du veta mer?", "end": "Det var den korta versionen! Vill du träffa henne?", "restart": "Börja om", "book": "Boka ett möte", "q": [["else", "Vad mer gör hon?", "Hon gör vetenskap roligt att lära sig. Hon skriver böcker om DNA, och hon tecknar och designar också."], ["best", "Vad är hon bäst på?", "Att föra människor samman. Hon har arrangerat tävlingar, forum och symposier runt om i världen."], ["into", "Vad gillar hon?", "Promenader! Och att teckna, jobba, skriva, offentlig politik och volontärarbete."], ["field", "Vad är hennes område?", "Biomedicinsk teknik, samt innovation och teknik."], ["now", "Vad jobbar hon med nu?", "Hon jobbar för Buffer Box. Buffer Box planerar labbexperiment så att de kommer igång i tid. Verktyget håller koll på vilket material du behöver och när du ska beställa det, och planerar om när en leverans blir försenad."], ["reach", "Hur når jag henne?", "Precis här! Välj det som är enklast:"]], "email": "E-post"}};
+const LINKEDIN_ON = ['else', 'best', 'into', 'field', 'now'];
+const API = '/api';
+const DOCS = [['CV','CV'],['resume','Résumé'],['portfolio','Portfolio'],['certs','Certificates & prizes'],['docSci','Science projects'],[null,'DNA Way Home'],[null,'DNA in Digestion']];
+
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch(e){} } };
+
+function guessLang(){
+  const n = (navigator.language || 'en').toLowerCase();
+  if (n.startsWith('zh')) return /cn|sg|hans/.test(n) ? 'zhHans' : 'zhHant';
+  if (n.startsWith('sv')) return 'sv';
+  return 'en';
+}
+let lang = store.get('lang') || guessLang();
+if (!T[lang]) lang = 'en';
+const t = () => T[lang] || T.en;
+const k = () => K[lang] || K.en;
+
+/* ---------- language ---------- */
+function applyLang(){
+  document.documentElement.lang = { en:'en', zhHant:'zh-Hant', zhHans:'zh-Hans', sv:'sv' }[lang];
+  const dict = Object.assign({}, t(), k());
+  $$('[data-i18n]').forEach(el => { const v = dict[el.dataset.i18n]; if (v !== undefined) el.textContent = v; });
+  const tg = $('[data-i18n=tagline]'); tg.textContent = ''; t().tagline.split(' · ').forEach((part, i) => { if (i) tg.appendChild(document.createTextNode(' · ')); const sp = document.createElement('span'); sp.style.whiteSpace = 'nowrap'; sp.textContent = part; tg.appendChild(sp); });
+  const L = LANGS.find(l => l[0] === lang) || LANGS[0];
+  $('#langLabel').textContent = L[2];
+  $('#langBtn').setAttribute('aria-label', 'Language: ' + L[1]);
+  $$('#langMenu button').forEach(b => b.setAttribute('aria-checked', b.dataset.lang === lang ? 'true' : 'false'));
+  $('#status').textContent = t()[STATUS] || t().free;
+  $('#copyLink').textContent = t().copyLink;
+  if (!$('#uSteps').hidden) uRender(); else $('#uBubble').textContent = t().unlockBubble;
+  renderLinks(); renderDocs(); renderDocPick(); renderChat(true); renderPosts();
+}
+const menu = $('#langMenu');
+LANGS.forEach(l => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.setAttribute('role', 'menuitemradio'); b.dataset.lang = l[0]; b.textContent = l[1];
+  b.addEventListener('click', () => { lang = l[0]; store.set('lang', lang); closeMenu(); applyLang(); $('#langBtn').focus(); });
+  menu.appendChild(b);
+});
+function closeMenu(){ menu.hidden = true; $('#langBtn').setAttribute('aria-expanded', 'false'); }
+$('#langBtn').addEventListener('click', e => {
+  e.stopPropagation();
+  const open = menu.hidden; menu.hidden = !open; $('#langBtn').setAttribute('aria-expanded', String(open));
+  if (open) menu.querySelector('[aria-checked="true"]')?.focus();
+});
+document.addEventListener('click', e => { if (!menu.hidden && !menu.contains(e.target)) closeMenu(); });
+
+/* ---------- expanders ---------- */
+document.addEventListener('click', e => {
+  const btn = e.target.closest('button[aria-controls]'); if (!btn) return;
+  const p = document.getElementById(btn.getAttribute('aria-controls')); if (!p) return;
+  const open = btn.getAttribute('aria-expanded') !== 'true';
+  btn.setAttribute('aria-expanded', String(open)); p.hidden = !open;
+});
+
+/* ---------- DNA flip ---------- */
+$$('.flip').forEach(f => {
+  let lastTap = 0, lastFlip = 0;
+  const flip = () => {
+    if (Date.now() - lastFlip < 450) return;
+    lastFlip = Date.now();
+    const on = f.classList.toggle('is-flipped');
+    f.setAttribute('aria-label', on ? 'Emily’s DNA mascot. Double-tap to flip back' : 'Emily’s DNA. Double-tap to flip');
+  };
+  f.addEventListener('dblclick', flip);
+  f.addEventListener('click', e => { if (e.detail === 0) flip(); });
+  f.addEventListener('touchend', e => {
+    const now = Date.now();
+    if (now - lastTap < 320) { e.preventDefault(); flip(); lastTap = 0; } else lastTap = now;
+  });
+});
+
+/* ---------- Know Emily chat ---------- */
+let asked = [];
+function el(tag, cls, text){ const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; }
+/* Only the newest question and answer are added and animated; earlier bubbles stay put, so nothing flashes. */
+let chatShown = 0;
+function qaNodes(id, K1, still){
+  const q = K1.q.find(x => x[0] === id); if (!q) return [];
+  const out = [el('p', 'me' + still, q[1])];
+  const a = el('div', 'it' + still); a.appendChild(el('p', '', q[2]));
+  if (id === 'reach') {
+    const acts = el('div', 'acts');
+    [[K1.book, '/meet/'], ['WhatsApp', 'https://wa.me/85293009116'], [K1.email, 'mailto:me@emilylam.hk']].forEach(([l, h]) => { const x = el('a', '', l); x.href = h; acts.appendChild(x); });
+    a.appendChild(acts);
+  }
+  out.push(a);
+  if (LINKEDIN_ON.includes(id)) {
+    const li = el('div', 'li' + still); li.appendChild(el('span', 'logo', 'in')).setAttribute('aria-hidden', 'true');
+    li.appendChild(el('span', '', K1.more));
+    const x = el('a', '', 'LinkedIn ↗'); x.href = 'https://www.linkedin.com/in/emilylam-hk'; li.appendChild(x);
+    out.push(li);
+  }
+  return out;
+}
+function renderChat(full){
+  const chat = $('#chat'), chips = $('#chips'), K1 = k();
+  if (full || chatShown > asked.length || !chat.firstChild) {
+    chat.innerHTML = ''; chatShown = 0;
+    const greet = el('div', 'it still'); greet.appendChild(el('p', '', K1.greet)); chat.appendChild(greet);
+  }
+  const still = full ? ' still' : '';
+  for (; chatShown < asked.length; chatShown++) qaNodes(asked[chatShown], K1, still).forEach(n => chat.appendChild(n));
+  const left = K1.q.filter(q => !asked.includes(q[0]));
+  $('#chatEnd')?.remove();
+  if (!left.length) { const end = el('div', 'it' + still); end.id = 'chatEnd'; end.appendChild(el('p', '', K1.end)); chat.appendChild(end); }
+  chips.innerHTML = '';
+  left.forEach(q => { const b = el('button', '', q[1]); b.type = 'button'; b.addEventListener('click', () => { asked.push(q[0]); renderChat(); }); chips.appendChild(b); });
+  chips.hidden = !left.length; $('#restart').hidden = !!left.length;
+}
+$('#restart').addEventListener('click', () => { asked = []; renderChat(true); });
+
+/* ---------- document request ---------- */
+function renderDocPick(){
+  const box = $('#docPick'); const was = $$('input', box).filter(i => i.checked).map(i => i.value);
+  box.innerHTML = '';
+  const docs = DATA.docs, has = (sec) => docs.some(d => d.section === sec);
+  const items = [];
+  docs.filter(d => d.section === 'main').forEach(d => items.push(['doc:' + d.id, docName(d)]));
+  if (has('portfolio')) items.push(['sec:portfolio', t().portfolio]);
+  if (has('certs')) items.push(['sec:certs', t().certs]);
+  docs.filter(d => d.section === 'books').forEach(d => items.push(['doc:' + d.id, docName(d)]));
+  if (has('projects')) items.push(['sec:projects', t().docSci]);
+  items.forEach(([key, label]) => {
+    const lab = document.createElement('label'); const inp = document.createElement('input');
+    inp.type = 'checkbox'; inp.value = key; inp.dataset.label = label; inp.checked = was.includes(key);
+    lab.appendChild(inp); lab.appendChild(document.createTextNode(label)); box.appendChild(lab);
+  });
+}
+async function api(path, opts = {}) {
+  const r = await fetch(API + '/' + path, { method: opts.method || 'GET', headers: Object.assign({ 'Content-Type': 'application/json' }, opts.token ? { Authorization: 'Bearer ' + opts.token } : {}), body: opts.body ? JSON.stringify(opts.body) : undefined });
+  let data = {}; try { data = await r.json(); } catch (x) {}
+  if (!r.ok) throw Object.assign(new Error(data.error || 'server'), { code: data.error || 'server' });
+  return data;
+}
+const ERR = { bad_email: 'eEmail', bad_code: 'eCode', expired: 'eExpired', too_many: 'eTooMany', bad_password: 'ePassword', no_password: 'eNoPw', send_failed: 'eSend' };
+const errText = (e) => t()[ERR[e && e.code] || 'eServer'];
+
+const form = $('#requestForm');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const err = $('#reqErr'); err.hidden = true;
+  const picked = $$('#docPick input').filter(i => i.checked); const docs = picked.map(i => i.value); const docLabels = picked.map(i => i.dataset.label);
+  const name = form.name.value.trim(), email = form.email.value.trim();
+  if (!docs.length) { err.textContent = t().pickOne; err.hidden = false; return; }
+  if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = t().fillAll; err.hidden = false; return; }
+  const btn = $('#reqSend'); btn.disabled = true; btn.textContent = t().sending;
+  let ok = false;
+  try { await api('request', { method: 'POST', body: { name, email, organisation: form.organisation.value, documents: docs, language: lang, bot: form.bot.value } }); ok = true; } catch (x) {}
+  btn.disabled = false; btn.textContent = t().send;
+  if (ok) {
+    $('#uBubble').textContent = t().sentBubble; $('#reqDoneText').textContent = t().sentBody;
+  } else {
+    const body = 'Name: ' + name + '\nEmail: ' + email + '\nOrganisation: ' + form.organisation.value + '\nDocuments: ' + docLabels.join(', ');
+    location.href = 'mailto:me@emilylam.hk?subject=' + encodeURIComponent('Document request') + '&body=' + encodeURIComponent(body);
+    $('#reqDoneText').textContent = t().mailNote;
+  }
+  $('#reqForm').hidden = true; $('#reqDone').hidden = false;
+});
+
+/* ---------- unlock: email code + password ---------- */
+let uState = 'email', uEmail = '', vtoken = '';
+const docToken = { get() { try { return sessionStorage.getItem('docToken') || ''; } catch (x) { return ''; } }, set(v) { try { v ? sessionStorage.setItem('docToken', v) : sessionStorage.removeItem('docToken'); } catch (x) {} } };
+function uErr(msg) { const e = $('#uErr'); e.textContent = msg || ''; e.hidden = !msg; }
+function uRender() {
+  const T1 = t();
+  const map = { email: ['step1', 'uTitle1', 'bub1'], code: ['step2', 'uTitle2', 'bub2'], pw: ['step3', 'uTitle3', 'bub3'], done: ['unlockedLabel', 'docs', 'bub4'] }[uState];
+  $('#uStep').textContent = T1[map[0]]; $('#uTitle').textContent = T1[map[1]]; $('#uBubble').textContent = T1[map[2]];
+  $('#uEmail').hidden = uState !== 'email'; $('#uCode').hidden = uState !== 'code'; $('#uPw').hidden = uState !== 'pw'; $('#uDone').hidden = uState !== 'done';
+  $('#uAlt').hidden = uState === 'done';
+  $('#uEmailShow').textContent = uEmail;
+  $('#uShow').textContent = $('#u-pw').type === 'password' ? T1.show : T1.hide;
+}
+function busy(formEl, on) { $$('button', formEl).forEach(b => b.disabled = on); }
+async function loadDocs(token) {
+  const { docs } = await api('docs', { token });
+  const box = $('#uList'); box.innerHTML = '';
+  if (!docs.length) { box.appendChild(el('p', 'muted', t().noFiles)); return; }
+  docs.forEach(d => {
+    const a = el('a', 'item'); a.href = API + '/file?id=' + encodeURIComponent(d.id) + '&t=' + encodeURIComponent(token); a.target = '_blank'; a.rel = 'noopener';
+    a.appendChild(el('span', '', d.name)); a.appendChild(el('span', 'doc-open', t().open + ' ↗'));
+    box.appendChild(a);
+  });
+}
+$('#uEmail').addEventListener('submit', async e => {
+  e.preventDefault(); uErr('');
+  const v = $('#u-email').value.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return uErr(t().eEmail);
+  busy(e.target, true);
+  try { await api('code', { method: 'POST', body: { email: v } }); uEmail = v; uState = 'code'; $('#u-code').value = ''; $('#uResend').textContent = t().resend; uRender(); $('#u-code').focus(); }
+  catch (x) { uErr(errText(x)); }
+  busy(e.target, false);
+});
+$('#u-code').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, '').slice(0, 6); });
+$('#uCode').addEventListener('submit', async e => {
+  e.preventDefault(); uErr('');
+  const c = $('#u-code').value;
+  if (c.length !== 6) return uErr(t().eDigits);
+  busy(e.target, true);
+  try { const r = await api('verify', { method: 'POST', body: { email: uEmail, code: c } }); vtoken = r.vtoken; uState = 'pw'; $('#u-pw').value = ''; uRender(); $('#u-pw').focus(); }
+  catch (x) { uErr(errText(x)); }
+  busy(e.target, false);
+});
+$('#uResend').addEventListener('click', async () => {
+  uErr('');
+  try { await api('code', { method: 'POST', body: { email: uEmail } }); $('#uResend').textContent = t().resent; }
+  catch (x) { uErr(errText(x)); }
+});
+$('#uChange').addEventListener('click', () => { uErr(''); uState = 'email'; uRender(); $('#u-email').focus(); });
+$('#uShow').addEventListener('click', () => { const i = $('#u-pw'); i.type = i.type === 'password' ? 'text' : 'password'; uRender(); });
+$('#uPw').addEventListener('submit', async e => {
+  e.preventDefault(); uErr('');
+  const pw = $('#u-pw').value;
+  if (!pw) return uErr(t().ePassword);
+  busy(e.target, true);
+  try { const r = await api('unlock', { method: 'POST', body: { vtoken, password: pw } }); docToken.set(r.token); await loadDocs(r.token); uState = 'done'; uRender(); }
+  catch (x) { if (x.code === 'expired') { uState = 'email'; uRender(); } uErr(errText(x)); }
+  busy(e.target, false);
+});
+$('#uLock').addEventListener('click', () => { docToken.set(''); uState = 'email'; uEmail = ''; vtoken = ''; uRender(); });
+async function enterUnlock(params) {
+  uErr('');
+  const grant = params.get('grant');
+  const token = grant || docToken.get();
+  if (token) {
+    try { await loadDocs(token); docToken.set(token); uState = 'done'; uRender(); return; }
+    catch (x) { docToken.set(''); if (grant) { uState = 'email'; uRender(); uErr(t().eLink); return; } }
+  }
+  if (uState === 'done') uState = 'email';
+  uRender();
+}
+
+/* ---------- log ---------- */
+function renderPosts(){
+  const box = $('#posts'); box.innerHTML = '';
+  if (!LOG_POSTS.length) { box.appendChild(el('p', 'muted', t().logEmpty)); return; }
+  LOG_POSTS.forEach(p => {
+    const a = el('article', 'post'); const tm = el('time', '', p.date); tm.dateTime = p.date; a.appendChild(tm);
+    if (p.title) a.appendChild(el('h2', '', p.title));
+    if (p.text) a.appendChild(el('p', '', p.text));
+    if (p.photos && p.photos.length) {
+      const g = el('div', 'photos');
+      p.photos.forEach((id, i) => { const l = el('a'); l.href = API + '/photo?id=' + encodeURIComponent(id); l.target = '_blank'; l.rel = 'noopener';
+        const im = el('img'); im.src = l.href; im.loading = 'lazy'; im.alt = (p.title || t().log) + ' ' + (i + 1); l.appendChild(im); g.appendChild(l); });
+      a.appendChild(g);
+    }
+    box.appendChild(a);
+  });
+}
+
+/* ---------- dialogs ---------- */
+let lastFocus = null;
+function openDialog(d){ lastFocus = document.activeElement; d.hidden = false; d.querySelector('[data-close]').focus(); }
+function closeDialog(d){ d.hidden = true; lastFocus && lastFocus.focus(); }
+$$('.scrim').forEach(d => {
+  d.addEventListener('click', e => { if (e.target === d || e.target.closest('[data-close]')) closeDialog(d); });
+});
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  $$('.scrim').forEach(d => { if (!d.hidden) closeDialog(d); });
+  if (!menu.hidden) { closeMenu(); $('#langBtn').focus(); }
+});
+$('#qrBtn').addEventListener('click', () => openQR(SITE_QR()));
+$('#logQr').addEventListener('click', () => openQR(LOG_QR()));
+$('#shareBtn').addEventListener('click', async () => {
+  if (navigator.share) { try { await navigator.share({ title: 'Emily Lam', url: 'https://emilylam.hk' }); return; } catch (x) { if (x && x.name === 'AbortError') return; } }
+  openDialog($('#shareDialog'));
+});
+$('#copyLink').addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText('https://emilylam.hk'); $('#copyLink').textContent = t().copied; setTimeout(() => $('#copyLink').textContent = t().copyLink, 2000); } catch (x) {}
+});
+
+/* ---------- links, documents, QR ---------- */
+const DATA = {"links": [{"id": "linkedin", "label": "LinkedIn", "url": "https://www.linkedin.com/in/emilylam-hk", "note": "", "color": "#0A66C2", "icon": "briefcase"}, {"id": "instagram", "label": "Instagram", "url": "https://www.instagram.com/emilylam.hk", "note": "", "color": "#C13584", "icon": "camera"}, {"id": "bufferbox", "label": "bufferbox.ing", "url": "https://bufferbox.ing", "note": "my current project", "color": "#1F5F8B", "icon": "box"}, {"id": "i2ol", "label": "i2ol.org", "url": "https://i2ol.org", "note": "the NGO I’m working at", "color": "#6B3FA0", "icon": "globe"}], "docs": [{"id": "cv", "name": "CV", "section": "main"}, {"id": "resume", "name": "Résumé", "section": "main"}, {"id": "portfolio-personal", "name": "Personal", "section": "portfolio"}, {"id": "portfolio-occupational", "name": "Occupational", "section": "portfolio"}, {"id": "portfolio-ap2d", "name": "AP 2D Art & Design", "extra": "5/5", "section": "portfolio"}, {"id": "portfolio-apdrawing", "name": "AP Drawing", "extra": "5/5", "section": "portfolio"}, {"id": "cert-soty", "name": "Student of the Year — Scientist & Mathematician", "section": "certs"}, {"id": "cert-speech", "name": "Champion, Hong Kong Schools Speech Festival", "section": "certs"}, {"id": "cert-mediation", "name": "Champion, Peer Mediation Competition", "section": "certs"}, {"id": "cert-biology", "name": "Gold Award, Biology Challenge", "section": "certs"}, {"id": "cert-stem", "name": "Finalist, STEM Challenge", "section": "certs"}, {"id": "cert-hkfyg", "name": "Finalist, HKFYG English Public Speaking Contest", "section": "certs"}, {"id": "book-dnawayhome", "name": "DNA Way Home", "section": "books"}, {"id": "book-dnaindigestion", "name": "DNA in Digestion", "section": "books"}, {"id": "project-alginate", "name": "Alginate", "section": "projects"}, {"id": "project-drdd", "name": "Date Rape Drug Detector", "section": "projects"}, {"id": "project-medaitor", "name": "MedAitor", "section": "projects"}]};
+const ICONS = {"briefcase": "<rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2\"/><path d=\"M3 13h18\"/>", "camera": "<path d=\"M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z\"/><circle cx=\"12\" cy=\"13.5\" r=\"3.5\"/>", "box": "<path d=\"M21 8l-9-5-9 5v8l9 5 9-5z\"/><path d=\"M3 8l9 5 9-5\"/><path d=\"M12 13v8\"/>", "globe": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18\"/><path d=\"M12 3a14 14 0 0 1 0 18\"/><path d=\"M12 3a14 14 0 0 0 0 18\"/>", "link": "<path d=\"M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1\"/><path d=\"M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1\"/>", "flask": "<path d=\"M9 3h6\"/><path d=\"M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3\"/><path d=\"M7.5 15h9\"/>", "book": "<path d=\"M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z\"/><path d=\"M4 21a2 2 0 0 1 2-2h13\"/>", "star": "<path d=\"M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z\"/>", "play": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M10 8.5l6 3.5-6 3.5z\"/>", "mail": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 7l9 6 9-6\"/>", "notebook": "<path d=\"M6 4h11a2 2 0 0 1 2 2v14H8a2 2 0 0 1-2-2z\"/><path d=\"M6 18a2 2 0 0 1 2-2h11\"/><path d=\"M10 8h5\"/>"};
+const HELIX = "<g transform=\"rotate(0 50 50)\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M47.97 18.62 L52.03 18.62M38.95 23.85 L61.05 23.85M37.49 29.08 L62.51 29.08M44.34 34.31 L55.66 34.31M41.28 44.77 L58.72 44.77M37.00 50.00 L63.00 50.00M41.28 55.23 L58.72 55.23M44.34 65.69 L55.66 65.69M37.49 70.92 L62.51 70.92M38.95 76.15 L61.05 76.15M47.97 81.38 L52.03 81.38\" stroke=\"#A9D98C\" stroke-width=\"3.4\"></path><path d=\"M50.00 16.00 L49.33 16.28 L48.67 16.57 L48.00 16.85 L47.34 17.13 L46.68 17.42 L46.03 17.70 L45.39 17.98 L44.75 18.27 L44.12 18.55 L43.49 18.83 L42.88 19.12 L42.28 19.40 L41.69 19.68 L41.12 19.97 L40.56 20.25 L40.01 20.53 L39.48 20.82 L38.96 21.10 L38.46 21.38 L37.98 21.67 L37.52 21.95 L37.07 22.23 L36.65 22.52 L36.25 22.80 L35.87 23.08 L35.51 23.37 L35.17 23.65 L34.85 23.93 L34.56 24.22 L34.29 24.50 L34.05 24.78 L33.83 25.07 L33.64 25.35 L33.47 25.63 L33.33 25.92 L33.21 26.20 L33.12 26.48 L33.05 26.77 L33.01 27.05 L33.00 27.33 L33.01 27.62 L33.05 27.90 L33.12 28.18 L33.21 28.47 L33.33 28.75 L33.47 29.03 L33.64 29.32 L33.83 29.60 L34.05 29.88 L34.29 30.17 L34.56 30.45 L34.85 30.73 L35.17 31.02 L35.51 31.30 L35.87 31.58 L36.25 31.87 L36.65 32.15 L37.07 32.43 L37.52 32.72 L37.98 33.00 L38.46 33.28 L38.96 33.57 L39.48 33.85 L40.01 34.13 L40.56 34.42 L41.12 34.70 L41.69 34.98 L42.28 35.27 L42.88 35.55 L43.49 35.83 L44.12 36.12 L44.75 36.40 L45.39 36.68 L46.03 36.97 L46.68 37.25 L47.34 37.53 L48.00 37.82 L48.67 38.10 L49.33 38.38 L50.00 38.67 L50.67 38.95 L51.33 39.23 L52.00 39.52 L52.66 39.80 L53.32 40.08 L53.97 40.37 L54.61 40.65 L55.25 40.93 L55.88 41.22 L56.51 41.50 L57.12 41.78 L57.72 42.07 L58.31 42.35 L58.88 42.63 L59.44 42.92 L59.99 43.20 L60.52 43.48 L61.04 43.77 L61.54 44.05 L62.02 44.33 L62.48 44.62 L62.93 44.90 L63.35 45.18 L63.75 45.47 L64.13 45.75 L64.49 46.03 L64.83 46.32 L65.15 46.60 L65.44 46.88 L65.71 47.17 L65.95 47.45 L66.17 47.73 L66.36 48.02 L66.53 48.30 L66.67 48.58 L66.79 48.87 L66.88 49.15 L66.95 49.43 L66.99 49.72 L67.00 50.00 L66.99 50.28 L66.95 50.57 L66.88 50.85 L66.79 51.13 L66.67 51.42 L66.53 51.70 L66.36 51.98 L66.17 52.27 L65.95 52.55 L65.71 52.83 L65.44 53.12 L65.15 53.40 L64.83 53.68 L64.49 53.97 L64.13 54.25 L63.75 54.53 L63.35 54.82 L62.93 55.10 L62.48 55.38 L62.02 55.67 L61.54 55.95 L61.04 56.23 L60.52 56.52 L59.99 56.80 L59.44 57.08 L58.88 57.37 L58.31 57.65 L57.72 57.93 L57.12 58.22 L56.51 58.50 L55.88 58.78 L55.25 59.07 L54.61 59.35 L53.97 59.63 L53.32 59.92 L52.66 60.20 L52.00 60.48 L51.33 60.77 L50.67 61.05 L50.00 61.33 L49.33 61.62 L48.67 61.90 L48.00 62.18 L47.34 62.47 L46.68 62.75 L46.03 63.03 L45.39 63.32 L44.75 63.60 L44.12 63.88 L43.49 64.17 L42.88 64.45 L42.28 64.73 L41.69 65.02 L41.12 65.30 L40.56 65.58 L40.01 65.87 L39.48 66.15 L38.96 66.43 L38.46 66.72 L37.98 67.00 L37.52 67.28 L37.07 67.57 L36.65 67.85 L36.25 68.13 L35.87 68.42 L35.51 68.70 L35.17 68.98 L34.85 69.27 L34.56 69.55 L34.29 69.83 L34.05 70.12 L33.83 70.40 L33.64 70.68 L33.47 70.97 L33.33 71.25 L33.21 71.53 L33.12 71.82 L33.05 72.10 L33.01 72.38 L33.00 72.67 L33.01 72.95 L33.05 73.23 L33.12 73.52 L33.21 73.80 L33.33 74.08 L33.47 74.37 L33.64 74.65 L33.83 74.93 L34.05 75.22 L34.29 75.50 L34.56 75.78 L34.85 76.07 L35.17 76.35 L35.51 76.63 L35.87 76.92 L36.25 77.20 L36.65 77.48 L37.07 77.77 L37.52 78.05 L37.98 78.33 L38.46 78.62 L38.96 78.90 L39.48 79.18 L40.01 79.47 L40.56 79.75 L41.12 80.03 L41.69 80.32 L42.28 80.60 L42.88 80.88 L43.49 81.17 L44.12 81.45 L44.75 81.73 L45.39 82.02 L46.03 82.30 L46.68 82.58 L47.34 82.87 L48.00 83.15 L48.67 83.43 L49.33 83.72 L50.00 84.00\" stroke=\"#6CBF47\" stroke-width=\"5.5\"></path><path d=\"M50.00 16.00 L50.67 16.28 L51.33 16.57 L52.00 16.85 L52.66 17.13 L53.32 17.42 L53.97 17.70 L54.61 17.98 L55.25 18.27 L55.88 18.55 L56.51 18.83 L57.12 19.12 L57.72 19.40 L58.31 19.68 L58.88 19.97 L59.44 20.25 L59.99 20.53 L60.52 20.82 L61.04 21.10 L61.54 21.38 L62.02 21.67 L62.48 21.95 L62.93 22.23 L63.35 22.52 L63.75 22.80 L64.13 23.08 L64.49 23.37 L64.83 23.65 L65.15 23.93 L65.44 24.22 L65.71 24.50 L65.95 24.78 L66.17 25.07 L66.36 25.35 L66.53 25.63 L66.67 25.92 L66.79 26.20 L66.88 26.48 L66.95 26.77 L66.99 27.05 L67.00 27.33 L66.99 27.62 L66.95 27.90 L66.88 28.18 L66.79 28.47 L66.67 28.75 L66.53 29.03 L66.36 29.32 L66.17 29.60 L65.95 29.88 L65.71 30.17 L65.44 30.45 L65.15 30.73 L64.83 31.02 L64.49 31.30 L64.13 31.58 L63.75 31.87 L63.35 32.15 L62.93 32.43 L62.48 32.72 L62.02 33.00 L61.54 33.28 L61.04 33.57 L60.52 33.85 L59.99 34.13 L59.44 34.42 L58.88 34.70 L58.31 34.98 L57.72 35.27 L57.12 35.55 L56.51 35.83 L55.88 36.12 L55.25 36.40 L54.61 36.68 L53.97 36.97 L53.32 37.25 L52.66 37.53 L52.00 37.82 L51.33 38.10 L50.67 38.38 L50.00 38.67 L49.33 38.95 L48.67 39.23 L48.00 39.52 L47.34 39.80 L46.68 40.08 L46.03 40.37 L45.39 40.65 L44.75 40.93 L44.12 41.22 L43.49 41.50 L42.88 41.78 L42.28 42.07 L41.69 42.35 L41.12 42.63 L40.56 42.92 L40.01 43.20 L39.48 43.48 L38.96 43.77 L38.46 44.05 L37.98 44.33 L37.52 44.62 L37.07 44.90 L36.65 45.18 L36.25 45.47 L35.87 45.75 L35.51 46.03 L35.17 46.32 L34.85 46.60 L34.56 46.88 L34.29 47.17 L34.05 47.45 L33.83 47.73 L33.64 48.02 L33.47 48.30 L33.33 48.58 L33.21 48.87 L33.12 49.15 L33.05 49.43 L33.01 49.72 L33.00 50.00 L33.01 50.28 L33.05 50.57 L33.12 50.85 L33.21 51.13 L33.33 51.42 L33.47 51.70 L33.64 51.98 L33.83 52.27 L34.05 52.55 L34.29 52.83 L34.56 53.12 L34.85 53.40 L35.17 53.68 L35.51 53.97 L35.87 54.25 L36.25 54.53 L36.65 54.82 L37.07 55.10 L37.52 55.38 L37.98 55.67 L38.46 55.95 L38.96 56.23 L39.48 56.52 L40.01 56.80 L40.56 57.08 L41.12 57.37 L41.69 57.65 L42.28 57.93 L42.88 58.22 L43.49 58.50 L44.12 58.78 L44.75 59.07 L45.39 59.35 L46.03 59.63 L46.68 59.92 L47.34 60.20 L48.00 60.48 L48.67 60.77 L49.33 61.05 L50.00 61.33 L50.67 61.62 L51.33 61.90 L52.00 62.18 L52.66 62.47 L53.32 62.75 L53.97 63.03 L54.61 63.32 L55.25 63.60 L55.88 63.88 L56.51 64.17 L57.12 64.45 L57.72 64.73 L58.31 65.02 L58.88 65.30 L59.44 65.58 L59.99 65.87 L60.52 66.15 L61.04 66.43 L61.54 66.72 L62.02 67.00 L62.48 67.28 L62.93 67.57 L63.35 67.85 L63.75 68.13 L64.13 68.42 L64.49 68.70 L64.83 68.98 L65.15 69.27 L65.44 69.55 L65.71 69.83 L65.95 70.12 L66.17 70.40 L66.36 70.68 L66.53 70.97 L66.67 71.25 L66.79 71.53 L66.88 71.82 L66.95 72.10 L66.99 72.38 L67.00 72.67 L66.99 72.95 L66.95 73.23 L66.88 73.52 L66.79 73.80 L66.67 74.08 L66.53 74.37 L66.36 74.65 L66.17 74.93 L65.95 75.22 L65.71 75.50 L65.44 75.78 L65.15 76.07 L64.83 76.35 L64.49 76.63 L64.13 76.92 L63.75 77.20 L63.35 77.48 L62.93 77.77 L62.48 78.05 L62.02 78.33 L61.54 78.62 L61.04 78.90 L60.52 79.18 L59.99 79.47 L59.44 79.75 L58.88 80.03 L58.31 80.32 L57.72 80.60 L57.12 80.88 L56.51 81.17 L55.88 81.45 L55.25 81.73 L54.61 82.02 L53.97 82.30 L53.32 82.58 L52.66 82.87 L52.00 83.15 L51.33 83.43 L50.67 83.72 L50.00 84.00\" stroke=\"#3B6D11\" stroke-width=\"5.5\"></path></g>";
+const DOC_I18N = { 'Résumé': 'resume', 'Personal': 'personal', 'Occupational': 'occupational' };
+const NOTE_I18N = { 'my current project': 'curProject', 'the NGO I’m working at': 'ngo' };
+const docName = (d) => (DOC_I18N[d.name] && t()[DOC_I18N[d.name]]) || d.name;
+const svgIcon = (name, color, size) => '<svg aria-hidden="true" width="' + (size || 20) + '" height="' + (size || 20) + '" viewBox="0 0 24 24" fill="none" stroke="' + color + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[name] || ICONS.link) + '</svg>';
+const LOCKSVG = '<svg role="img" aria-label="Locked" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+function lum(hex){ const c = hex.replace('#', '').match(/../g).map(x => { const v = parseInt(x, 16) / 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2]; }
+function darken(hex, f){ return '#' + hex.replace('#', '').match(/../g).map(x => Math.round(parseInt(x, 16) * f).toString(16).padStart(2, '0')).join(''); }
+function qrColor(hex){ let c = /^#[0-9a-f]{6}$/i.test(hex) ? hex : '#3B6D11'; for (let i = 0; i < 8 && lum(c) > .16; i++) c = darken(c, .85); return c; }
+function qrSvg(text, color){
+  const q = qrcode(0, 'H'); q.addData(text); q.make(); const n = q.getModuleCount(); let d = '';
+  for (let r = 0; r < n; r++) { let c = 0; while (c < n) { if (q.isDark(r, c)) { const s0 = c; while (c < n && q.isDark(r, c)) c++; d += 'M' + s0 + ' ' + r + 'h' + (c - s0) + 'v1h-' + (c - s0) + 'z'; } else c++; } }
+  return '<svg viewBox="0 0 ' + n + ' ' + n + '" shape-rendering="crispEdges" role="img" aria-label="QR code: ' + text.replace(/"/g, '') + '"><path fill="' + color + '" d="' + d + '"/></svg>';
+}
+const SITE_QR = () => ({ label: 'emilylam.hk', url: 'https://emilylam.hk', color: '#3B6D11', helix: true });
+const LOG_QR = () => ({ label: 'emilylam.hk · ' + t().log, url: 'https://emilylam.hk/#log', color: '#3B6D11', icon: 'notebook' });
+let qrLink = null;
+function openQR(link){
+  qrLink = link; const d = $('#qrDialog'); const brand = /^#[0-9a-f]{6}$/i.test(link.color || '') ? link.color : '#3B6D11';
+  d.style.setProperty('--qr', brand); d.style.setProperty('--qr-ink', lum(brand) > .4 ? '#16210F' : '#FFFFFF');
+  $('#qrTitle').textContent = link.label;
+  const ink = lum(brand) > .4 ? '#16210F' : '#FFFFFF';
+  const logoImg = link.logo ? '<img src="' + API + '/photo?id=' + encodeURIComponent(link.logo) + '" alt="">' : '';
+  $('#qrBadge').innerHTML = link.helix ? '<svg viewBox="0 0 100 100" width="34" height="34" style="background:#EAF3DE;border-radius:10px">' + HELIX + '</svg>' : (logoImg || svgIcon(link.icon, ink, 22));
+  $('#qrCenter').innerHTML = link.helix ? '<span class="dot" style="background:#EAF3DE"><svg viewBox="0 0 100 100" width="40" height="40">' + HELIX + '</svg></span>' : '<span class="dot">' + (logoImg || svgIcon(link.icon, ink, 24)) + '</span>';
+  $('#qrSvg').innerHTML = qrSvg(link.url, qrColor(brand));
+  $('#qrUrl').textContent = link.url.replace(/^https?:\/\//, '').replace(/^mailto:/, '').replace(/\/$/, '');
+  $('#qrOpen').href = link.url; $('#qrCopy').textContent = t().copyLink;
+  openDialog(d);
+}
+$('#qrCopy').addEventListener('click', async () => { if (!qrLink) return; try { await navigator.clipboard.writeText(qrLink.url); $('#qrCopy').textContent = t().copied; setTimeout(() => $('#qrCopy').textContent = t().copyLink, 2000); } catch (x) {} });
+function renderLinks(){
+  const nav = $('#p-links'); nav.innerHTML = '';
+  DATA.links.forEach(l => {
+    const row = el('div', 'linkrow'); const a = el('a', 'item'); a.href = l.url;
+    const lab = el('span', '', l.label);
+    if (l.note) { const key = NOTE_I18N[l.note]; lab.appendChild(document.createTextNode(' ')); lab.appendChild(el('span', 'sub', key && t()[key] ? t()[key] : '• ' + l.note)); }
+    a.appendChild(lab); a.appendChild(el('span', 'muted', '↗')).setAttribute('aria-hidden', 'true');
+    const b = el('button', 'qrmini'); b.type = 'button'; b.setAttribute('aria-label', t().qrFor + ' ' + l.label);
+    b.innerHTML = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="' + (lum(l.color || '#3B6D11') > .4 ? 'var(--ink)' : l.color) + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3z"/><path d="M17 17h4v4h-4"/></svg>';
+    b.addEventListener('click', () => openQR(l));
+    row.appendChild(a); row.appendChild(b); nav.appendChild(row);
+  });
+}
+function lockedRow(d, cls){
+  const a = el('a', cls); a.href = '#unlock';
+  const s1 = el('span', '', docName(d)); if (d.extra) { s1.appendChild(document.createTextNode(' ')); s1.appendChild(el('b', '', d.extra)); }
+  a.appendChild(s1); a.insertAdjacentHTML('beforeend', LOCKSVG); return a;
+}
+function renderDocs(){
+  const box = $('#docsBox');
+  const wasOpen = {}; $$('button[aria-controls^="s-"]', box).forEach(b => wasOpen[b.getAttribute('aria-controls')] = b.getAttribute('aria-expanded') === 'true');
+  box.innerHTML = '';
+  const docs = DATA.docs;
+  docs.filter(d => d.section === 'main').forEach(d => box.appendChild(lockedRow(d, 'item')));
+  [['portfolio', 'portfolio'], ['certs', 'certs'], ['books', 'books']].forEach(([sec, key]) => {
+    const list = docs.filter(d => d.section === sec); if (!list.length) return;
+    const open = !!wasOpen['s-' + sec];
+    const b = el('button', 'item'); b.type = 'button'; b.setAttribute('aria-expanded', String(open)); b.setAttribute('aria-controls', 's-' + sec);
+    const lab = el('span'); lab.style.flex = '1'; lab.appendChild(document.createTextNode(t()[key] + ' ')); lab.appendChild(el('span', 'sub', '· ' + list.length));
+    b.appendChild(lab); b.insertAdjacentHTML('beforeend', '<svg class="chev chev-r" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--icon)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>');
+    const subs = el('div', 'subs'); subs.id = 's-' + sec; subs.hidden = !open;
+    list.forEach(d => subs.appendChild(lockedRow(d, '')));
+    box.appendChild(b); box.appendChild(subs);
+  });
+  const pj = $('#projDocs'); pj.innerHTML = '';
+  docs.filter(d => d.section === 'projects').forEach(d => pj.appendChild(lockedRow(d, 'item')));
+}
+
+/* ---------- live status + log ---------- */
+fetch(API + '/public').then(r => r.ok ? r.json() : null).then(d => {
+  if (!d) return;
+  if (d.status) STATUS = d.status;
+  if (Array.isArray(d.posts)) LOG_POSTS = d.posts;
+  if (Array.isArray(d.links)) DATA.links = d.links;
+  if (Array.isArray(d.docs)) DATA.docs = d.docs;
+  $('#status').textContent = t()[STATUS] || t().free; renderPosts(); renderLinks(); renderDocs(); renderDocPick();
+}).catch(() => {});
+
+/* Spinning DNA: the same helix as the site's DNA icon, drawn in 3D and turned on its axis. */
+function hexMix(a, b, k) {
+  const pa = a.match(/\w\w/g).map(x => parseInt(x, 16)), pb = b.match(/\w\w/g).map(x => parseInt(x, 16));
+  return '#' + pa.map((v, i) => Math.round(v + (pb[i] - v) * k).toString(16).padStart(2, '0')).join('');
+}
+const HELIX_LIGHT = { a: '#3B6D11', b: '#6CBF47', r: '#A9D98C' };
+const HELIX_DARK = { a: '#9ED07A', b: '#6CBF47', r: '#4E7F35' };
+function sizeCanvas(cv) {
+  const r = window.devicePixelRatio || 1, w = Math.max(1, Math.round(cv.clientWidth * r));
+  if (cv.width !== w) { cv.width = w; cv.height = w; }
+}
+function drawHelix(cv, o) {
+  sizeCanvas(cv);
+  const ctx = cv.getContext('2d'), W = cv.width;
+  const dark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+  const to = dark ? HELIX_DARK : HELIX_LIGHT, mix = o.mix || 0;
+  const pal = { a: hexMix(HELIX_LIGHT.a, to.a, mix), b: hexMix(HELIX_LIGHT.b, to.b, mix), r: hexMix(HELIX_LIGHT.r, to.r, mix) };
+  ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, W, W); ctx.scale(W / 100, W / 100);
+  if (o.disc > 0) { ctx.globalAlpha = o.disc; ctx.fillStyle = '#EAF3DE'; ctx.beginPath(); ctx.arc(50, 50, 50, 0, Math.PI * 2); ctx.fill(); ctx.globalAlpha = 1; }
+  ctx.translate(50, 50); ctx.rotate(o.tilt || 0); ctx.translate(-50, -50);
+  const turns = 1.5, amp = 17, y0 = 16, y1 = 84, N = 140;
+  const pt = (t, s) => { const th = 2 * Math.PI * turns * t + (o.phase || 0) + (s ? Math.PI : 0); return [50 + amp * Math.sin(th), y0 + (y1 - y0) * t, Math.cos(th)]; };
+  ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  const strand = (s, front, color, width) => {
+    ctx.strokeStyle = color; ctx.lineWidth = width; ctx.beginPath();
+    let on = false, prev = null;
+    for (let i = 0; i <= N; i++) {
+      const p = pt(i / N, s), f = p[2] >= 0;
+      if (f === front) { if (!on) { const q = prev || p; ctx.moveTo(q[0], q[1]); on = true; } ctx.lineTo(p[0], p[1]); }
+      else { if (on) { ctx.lineTo(p[0], p[1]); } on = false; }
+      prev = p;
+    }
+    ctx.stroke();
+  };
+  const back = 1 - 0.45 * (o.depth || 0);
+  ctx.globalAlpha = back; strand(1, false, pal.b, 5.5); strand(0, false, pal.a, 5.5); ctx.globalAlpha = 1;
+  ctx.strokeStyle = pal.r; ctx.lineWidth = 3.4; ctx.beginPath();
+  for (let k = 0; k < 13; k++) {
+    const t = (k + 0.5) / 13, a = pt(t, 0), b = pt(t, 1);
+    if (Math.abs(a[0] - b[0]) > 9) { const lo = Math.min(a[0], b[0]), hi = Math.max(a[0], b[0]); ctx.moveTo(lo + 4, a[1]); ctx.lineTo(hi - 4, a[1]); }
+  }
+  ctx.stroke();
+  strand(1, true, pal.b, 5.5); strand(0, true, pal.a, 5.5);
+}
+
+/* ---------- "Book a meeting": fade into the loading screen while the DNA flies to the centre ---------- */
+const MEET = '/meet/';
+const GCAL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3iCvLEry0QMnr41BlCxDMPS_ZZ3TkMqB-KLZCixdSQhLCKDb_dBBwV1WM_ytgoN84b_Qvh2gmy';
+let leaving = false;
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href="/meet/"], a[href^="https://meet.emilylam.hk"]');
+  if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || leaving) return;
+  e.preventDefault(); leaving = true; bookTransition();
+});
+function bookTransition() {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ov = document.createElement('div'); ov.className = 'ld'; ov.setAttribute('role', 'status'); ov.setAttribute('aria-live', 'polite');
+  ov.innerHTML = '<div class="ld-bg"></div><div class="ld-glow"></div><canvas aria-hidden="true"></canvas><h1>Emily Lam</h1><p></p><div class="ld-fallback"><a></a></div>';
+  ov.querySelector('p').textContent = t().loading;
+  const fb = ov.querySelector('.ld-fallback a'); fb.textContent = t().fallback; fb.href = GCAL;
+  const bg = ov.querySelector('.ld-bg'), glow = ov.querySelector('.ld-glow'), cv = ov.querySelector('canvas');
+  const texts = [ov.querySelector('h1'), ov.querySelector('p'), ov.querySelector('.ld-fallback')];
+  bg.style.opacity = 0; glow.style.opacity = 0; texts.forEach(x => x.style.opacity = 0);
+  document.body.appendChild(ov);
+  const src = document.querySelector('[data-view]:not([hidden]) .flip');
+  const to = cv.getBoundingClientRect(), z = (to.width / cv.offsetWidth) || 1;
+  let from = null;
+  if (src && !still) { const r = src.getBoundingClientRect(); if (r.width && r.bottom > 0 && r.top < innerHeight) from = r; }
+  if (from) src.style.visibility = 'hidden';
+  const FLY = still ? 0 : 560, FADE = 300, t0 = performance.now();
+  const ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  let phase = 0, last = t0, gone = false;
+  function frame(now) {
+    if (!ov.isConnected) return;
+    const el = now - t0, dt = (now - last) / 1000; last = now;
+    const e = FLY ? ease(Math.min(1, el / FLY)) : 1;
+    bg.style.opacity = Math.min(1, el / FADE);
+    glow.style.opacity = e;
+    texts.forEach(x => x.style.opacity = Math.min(1, Math.max(0, (el - 180) / 320)));
+    if (from) {
+      const sc = from.width / to.width;
+      cv.style.transform = 'translate(' + ((from.left - to.left) / z) * (1 - e) + 'px,' + ((from.top - to.top) / z) * (1 - e) + 'px) scale(' + (sc + (1 - sc) * e) + ')';
+    } else cv.style.opacity = Math.min(1, el / FADE);
+    if (!still) phase += dt * (2 * Math.PI / 2.2) * e;
+    drawHelix(cv, { phase, tilt: (still ? 1 : e) * 25 * Math.PI / 180, disc: from ? 1 - e : 0, depth: still ? 1 : e, mix: still ? 1 : e });
+    if (!gone && el >= Math.max(FLY, FADE) + 80) {
+      gone = true;
+      location.href = MEET + '?lang=' + lang + '&p=' + (phase % (2 * Math.PI)).toFixed(3);
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+// Coming back with the browser's back button: clear the loading screen.
+window.addEventListener('pageshow', e => {
+  if (!e.persisted) return;
+  document.querySelectorAll('.ld').forEach(x => x.remove());
+  document.querySelectorAll('.flip').forEach(x => x.style.visibility = '');
+  leaving = false;
+});
+
+/* ---------- routing ---------- */
+function route(){
+  const raw = (location.hash || '').replace('#', '');
+  const [v, q] = raw.split('?');
+  const name = v || 'home';
+  const view = ['home', 'know', 'unlock', 'request', 'log'].includes(name) ? name : 'home';
+  const section = view === 'request' ? 'unlock' : view;
+  $$('[data-view]').forEach(s => s.hidden = s.dataset.view !== section);
+  if (section === 'unlock') {
+    const isReq = view === 'request';
+    $('#uSteps').hidden = isReq; $('#reqWrap').hidden = !isReq;
+    $('#uBack').setAttribute('href', isReq ? '#unlock' : '#');
+    if (isReq) { $('#reqForm').hidden = false; $('#reqDone').hidden = true; $('#uBubble').textContent = t().unlockBubble; }
+    else enterUnlock(new URLSearchParams(q || ''));
+  }
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', route);
+applyLang(); route();
+</script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · emilylam.hk</title>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&display=swap">
+<style>
+:root{--bg:#F6F8F3;--surface:#FFFFFF;--ink:#16210F;--muted:#55624C;--line:#D5DDCC;--soft:#EAF3DE;--soft-ink:#27500A;--primary:#3B6D11;--icon:#3B6D11;--warn-bg:#FFF4DB;--warn-ink:#6B4A00;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#1B1D1A;--surface:#232621;--ink:#EEF1EA;--muted:#A9B2A2;--line:#3B4038;--soft:#EAF3DE;--soft-ink:#27500A;--primary:#3B6D11;--icon:#7BC04A;--warn-bg:#3A3220;--warn-ink:#F3DDA2;color-scheme:dark}}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
+button,input,textarea{font:inherit;color:inherit}
+a{color:var(--ink)}a:hover{color:var(--icon)}
+:focus-visible{outline:3px solid var(--icon);outline-offset:2px}
+.wrap{max-width:640px;margin:0 auto;padding:calc(20px + env(safe-area-inset-top)) 20px calc(48px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:20px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.top h1{margin:0;font-size:20px}
+.top nav{display:flex;gap:16px;align-items:center}
+.top nav a,.top nav button{min-height:44px;display:inline-flex;align-items:center;background:none;border:0;padding:0;cursor:pointer;font-weight:600;font-size:15px;color:var(--muted);text-decoration:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.card h2{margin:0;font-size:18px;display:flex;align-items:center;gap:8px}
+.count{min-width:24px;height:24px;padding:0 8px;border-radius:999px;background:var(--primary);color:#fff;font-size:13px;display:inline-flex;align-items:center;justify-content:center}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-weight:700;font-size:15px}
+input[type=text],input[type=password],input[type=date],input[type=url],textarea{min-height:48px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-size:16px;width:100%}
+textarea{min-height:120px;resize:vertical}
+.btn{min-height:44px;padding:0 18px;border-radius:12px;border:0;background:var(--primary);color:#fff;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.soft{background:var(--soft);color:var(--soft-ink)}
+.btn.danger{background:transparent;color:#B42318;border:1px solid var(--line)}
+.btn:disabled{opacity:.6;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.list{display:flex;flex-direction:column}
+.list > div{padding:12px 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.list > div:first-child{border-top:0;padding-top:0}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills label{min-height:44px;display:inline-flex;align-items:center;padding:0 16px;border:1px solid var(--line);border-radius:999px;cursor:pointer;font-weight:600;position:relative}
+.pills input{position:absolute;opacity:0;width:1px;height:1px}
+.pills label:has(input:checked){background:var(--soft);border-color:var(--soft);color:var(--soft-ink)}
+.pills label:has(input:focus-visible){outline:3px solid var(--icon);outline-offset:2px}
+.banner{padding:12px 14px;border-radius:12px;background:var(--warn-bg);color:var(--warn-ink);font-size:15px}
+.err{margin:0;padding:12px 14px;border-radius:12px;background:#FCEBE8;color:#7A1F14;font-weight:600;font-size:15px}
+.tag{font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--soft);color:var(--soft-ink);align-self:flex-start}
+.tag.no{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:600;font-size:14px;z-index:20}
+.login{max-width:380px;margin:12vh auto 0}
+select{min-height:48px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font:inherit;color:inherit;width:100%}
+.thumbs{display:flex;flex-wrap:wrap;gap:8px}
+.thumb{position:relative;width:88px;height:88px;border-radius:12px;overflow:hidden;background:var(--soft)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb button{position:absolute;top:4px;right:4px;width:28px;height:28px;border-radius:999px;border:0;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;font-size:16px;line-height:1}
+.mini{min-height:36px;padding:0 10px;border-radius:10px;font-size:14px}
+.swatch{width:48px;height:48px;padding:0;border:1px solid var(--line);border-radius:12px;background:none;cursor:pointer}
+.logo{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex:0 0 48px}
+.logo img{width:100%;height:100%;object-fit:cover}
+.group h3{margin:0 0 6px;font-size:15px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (max-width:480px){.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="login" class="card login" hidden>
+<h1 style="margin:0;font-size:22px">Log in</h1>
+<p class="muted" style="margin:0">Your admin page for emilylam.hk.</p>
+<form id="loginForm" style="display:flex;flex-direction:column;gap:14px">
+<div class="field"><label for="adminPw">Admin password</label><input id="adminPw" type="password" autocomplete="current-password" required></div>
+<p class="err" id="loginErr" role="alert" hidden></p>
+<button class="btn" type="submit">Log in</button>
+</form>
+</section>
+
+<div id="app" class="wrap" style="padding:0" hidden>
+<header class="top">
+<h1>emilylam.hk admin</h1>
+<nav><a href="/" target="_blank" rel="noopener">View site ↗</a><button type="button" id="logout">Log out</button></nav>
+</header>
+<div id="banners" style="display:flex;flex-direction:column;gap:10px"></div>
+
+<section class="card">
+<h2>Requests <span class="count" id="reqCount" hidden></span></h2>
+<div class="list" id="reqList"></div>
+<details id="pastWrap" hidden><summary class="muted small" style="cursor:pointer;min-height:44px;display:flex;align-items:center">Earlier requests</summary><div class="list" id="pastList"></div></details>
+</section>
+
+<section class="card">
+<h2>Who opened what</h2>
+<p class="muted small" style="margin:0">Every unlock and document open, with the email the visitor verified.</p>
+<div class="row"><input id="logFilter" type="text" placeholder="Filter by email or document" aria-label="Filter by email or document" style="flex:1;min-width:200px"><button class="btn ghost mini" type="button" id="logCsv">Download CSV</button><button class="btn danger mini" type="button" id="logClear">Clear</button></div>
+<div class="list" id="logPeople"></div>
+<details id="logAllWrap"><summary class="muted small" style="cursor:pointer;min-height:44px;display:flex;align-items:center">All activity</summary><div class="list" id="logList"></div></details>
+</section>
+
+<section class="card">
+<h2>Admin sign-ins</h2>
+<p class="muted small" style="margin:0">Every attempt to log in here, with device, location and IP address. You also get an email each time someone signs in.</p>
+<div class="list" id="adminLogList"></div>
+<button class="btn danger" type="button" id="signoutAll" style="align-self:flex-start">Sign out all devices</button>
+</section>
+
+<section class="card">
+<h2>Status</h2>
+<p class="muted small" style="margin:0">What your DNA says on the home page.</p>
+<div class="pills" id="statusPills" role="radiogroup" aria-label="Status">
+<label><input type="radio" name="status" value="free">Free to chat</label>
+<label><input type="radio" name="status" value="busy">Busy this week</label>
+<label><input type="radio" name="status" value="travel">Travelling</label>
+<label><input type="radio" name="status" value="heads">Heads down on Buffer Box</label>
+</div>
+</section>
+
+<section class="card">
+<h2>Log</h2>
+<form id="postForm" style="display:flex;flex-direction:column;gap:12px">
+<p class="muted small" id="editing" style="margin:0" hidden></p>
+<div class="field"><label for="pTitle">Title</label><input id="pTitle" type="text" maxlength="160"></div>
+<div class="field"><label for="pDate">Date</label><input id="pDate" type="date"></div>
+<div class="field"><label for="pText">Post</label><textarea id="pText" maxlength="8000"></textarea></div>
+<div class="field"><span style="font-weight:700;font-size:15px">Photos</span>
+<div class="thumbs" id="thumbs"></div>
+<div class="row"><button type="button" class="btn ghost" id="addPhotos">Add photos</button><span class="muted small">Up to 8. Location and camera details are removed before upload.</span></div>
+<input type="file" id="photoPick" accept="image/*" multiple hidden></div>
+<div class="row"><button class="btn" type="submit" id="postBtn">Post</button><button class="btn ghost" type="button" id="cancelEdit" hidden>Cancel edit</button></div>
+</form>
+<div class="list" id="postList"></div>
+</section>
+
+<section class="card">
+<h2>Links</h2>
+<p class="muted small" style="margin:0">Shown under “All my links”. Each one gets its own QR code in its colour, with its icon or logo in the middle.</p>
+<div class="list" id="linkList"></div>
+<button type="button" class="btn ghost" id="addLink" style="align-self:flex-start">Add a link</button>
+<input type="file" id="logoPick" accept="image/*" hidden>
+</section>
+
+<section class="card">
+<h2>Documents</h2>
+<form id="pwForm" style="display:flex;flex-direction:column;gap:10px">
+<div class="field"><label for="docPw">Documents password</label><input id="docPw" type="text" autocomplete="off" minlength="6" placeholder="At least 6 characters"></div>
+<p class="muted small" style="margin:0" id="pwState"></p>
+<button class="btn ghost" type="submit" style="align-self:flex-start">Save password</button>
+</form>
+<p class="muted small" style="margin:0">These appear as locked items on your home page. Upload a file (up to 4 MB) or paste a link for anything bigger. Only items with a file or link can be opened.</p>
+<div id="docGroups" style="display:flex;flex-direction:column;gap:18px"></div>
+<form id="addDoc" class="row" style="align-items:flex-end">
+<div class="field" style="flex:2;min-width:180px"><label for="ndName">New document</label><input id="ndName" type="text" maxlength="160" placeholder="Name"></div>
+<div class="field" style="flex:1;min-width:150px"><label for="ndSec">Where</label><select id="ndSec"></select></div>
+<button class="btn" type="submit">Add</button>
+</form>
+<input type="file" id="filePick" hidden>
+</section>
+</div>
+
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+const API = '/api';
+const $ = (s) => document.querySelector(s);
+let token = ''; try { token = localStorage.getItem('adminToken') || ''; } catch (e) {}
+const STATUS_NAMES = { free: 'Free to chat', busy: 'Busy this week', travel: 'Travelling', heads: 'Heads down on Buffer Box' };
+const SECTION_NAMES = { main: 'Documents (own row)', portfolio: 'Portfolio', certs: 'Certificates & prizes', books: 'Books', projects: 'Past projects (locked)' };
+const ICON_NAMES = { briefcase: 'Briefcase', camera: 'Camera', box: 'Box', globe: 'Globe', link: 'Link', flask: 'Flask', book: 'Book', star: 'Star', play: 'Play', mail: 'Mail', notebook: 'Notebook' };
+const ERRORS = { bad_password: 'That password isn’t right.', too_many: 'Too many tries. Wait 15 minutes.', too_short: 'Use at least 6 characters.', too_big: 'That file is too big. Use a link instead.', send_failed: 'The email couldn’t be sent. Check your Resend settings.', setup: 'A setting is missing in Vercel: ', bad_request: 'Something’s missing. Check the form.', bad_link: 'Each link needs a name and a full address starting with https://', bad_image: 'That image type isn’t supported. Try a JPEG or PNG.' };
+
+async function api(path, opts = {}) {
+  const r = await fetch(API + '/' + path, { method: opts.method || 'GET', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token }, body: opts.body ? JSON.stringify(opts.body) : undefined });
+  let d = {}; try { d = await r.json(); } catch (e) {}
+  if (r.status === 401 && d.error === 'signed_out') { signOut(); throw new Error('Signed out'); }
+  if (!r.ok) throw new Error((ERRORS[d.error] || 'Something went wrong. Try again.') + (d.missing ? d.missing : ''));
+  return d;
+}
+async function apiRaw(path, blob, type) {
+  const r = await fetch(API + '/' + path, { method: 'POST', headers: { 'Content-Type': type || blob.type || 'application/octet-stream', Authorization: 'Bearer ' + token }, body: blob });
+  let d = {}; try { d = await r.json(); } catch (e) {}
+  if (r.status === 401 && d.error === 'signed_out') { signOut(); throw new Error('Signed out'); }
+  if (!r.ok) throw new Error((ERRORS[d.error] || 'Something went wrong. Try again.') + (d.missing ? d.missing : ''));
+  return d;
+}
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => t.hidden = true, 2600); }
+function el(tag, attrs = {}, ...kids) { const n = document.createElement(tag); for (const [k, v] of Object.entries(attrs)) { if (v === undefined || v === false) continue; if (k === 'class') n.className = v; else if (k.startsWith('on')) n.addEventListener(k.slice(2), v); else if (k === 'value') n.value = v; else n.setAttribute(k, v === true ? '' : v); } kids.flat().forEach(c => c !== '' && c != null && n.append(c)); return n; }
+const fmtDate = (iso) => new Date(iso).toLocaleString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+const kb = (n) => n > 1048576 ? (n / 1048576).toFixed(1) + ' MB' : Math.ceil(n / 1024) + ' KB';
+const photoUrl = (id) => API + '/photo?id=' + encodeURIComponent(id);
+
+/* Re-draw an image on a canvas: this drops EXIF/GPS and other metadata, fixes rotation and shrinks it. */
+async function cleanImage(file, maxSide, type, quality) {
+  let src;
+  try { src = await createImageBitmap(file, { imageOrientation: 'from-image' }); }
+  catch (e) { src = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = URL.createObjectURL(file); }); }
+  const w0 = src.width, h0 = src.height, k = Math.min(1, maxSide / Math.max(w0, h0));
+  const c = document.createElement('canvas'); c.width = Math.round(w0 * k); c.height = Math.round(h0 * k);
+  const g = c.getContext('2d'); if (type === 'image/jpeg') { g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height); }
+  g.drawImage(src, 0, 0, c.width, c.height);
+  return await new Promise((res) => c.toBlob(res, type, quality));
+}
+async function uploadImage(file, kind) {
+  const blob = kind === 'logo' ? await cleanImage(file, 512, 'image/png') : await cleanImage(file, 1600, 'image/jpeg', 0.85);
+  return (await apiRaw('admin/photo', blob)).id;
+}
+
+/* ---------- auth ---------- */
+function signOut() { token = ''; try { localStorage.removeItem('adminToken'); } catch (e) {} $('#app').hidden = true; $('#login').hidden = false; $('#adminPw').focus(); }
+$('#logout').addEventListener('click', signOut);
+$('#loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault(); const err = $('#loginErr'); err.hidden = true;
+  try {
+    const r = await fetch(API + '/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password: $('#adminPw').value }) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error((ERRORS[d.error] || 'Couldn’t log in. Try again.') + (d.missing ? d.missing : ''));
+    token = d.token; try { localStorage.setItem('adminToken', token); } catch (x) {}
+    $('#adminPw').value = ''; await load();
+  } catch (x) { err.textContent = x.message; err.hidden = false; }
+});
+
+let state = null;
+async function load() {
+  try { state = await api('admin/state'); }
+  catch (e) { if (token) { signOut(); $('#loginErr').textContent = e.message; $('#loginErr').hidden = false; } return; }
+  $('#login').hidden = true; $('#app').hidden = false; render();
+}
+function render() { renderBanners(); renderRequests(); renderAccess(); renderAdminLog(); renderStatus(); renderPosts(); renderLinks(); renderDocs(); }
+
+function renderBanners() {
+  const b = $('#banners'); b.innerHTML = '';
+  if (!state.mailReady) b.append(el('p', { class: 'banner' }, 'Email isn’t connected yet, so visitors can’t get codes and approvals can’t be sent. Add RESEND_API_KEY and MAIL_FROM in Vercel (Settings → Environment Variables), then redeploy.'));
+  if (!state.hasPassword) b.append(el('p', { class: 'banner' }, 'Set a documents password below so visitors can unlock your documents.'));
+}
+
+/* ---------- requests ---------- */
+function renderRequests() {
+  const pending = state.requests.filter(r => r.state === 'pending'), past = state.requests.filter(r => r.state !== 'pending');
+  $('#reqCount').hidden = !pending.length; $('#reqCount').textContent = pending.length;
+  const rl = $('#reqList'); rl.innerHTML = '';
+  if (!pending.length) rl.append(el('p', { class: 'muted small', style: 'margin:0' }, 'No new requests.'));
+  pending.forEach(r => {
+    const approve = el('button', { class: 'btn', type: 'button', onclick: () => decide(r.id, 'approve', approve) }, 'Approve and email link');
+    const decline = el('button', { class: 'btn ghost', type: 'button', onclick: () => decide(r.id, 'decline', decline) }, 'Decline');
+    rl.append(el('div', {}, el('strong', {}, r.name + (r.organisation ? ' · ' + r.organisation : '')), el('a', { href: 'mailto:' + r.email, class: 'small' }, r.email),
+      el('span', { class: 'small' }, 'Wants: ' + r.documents.join(', ')), el('span', { class: 'muted small' }, fmtDate(r.created)), el('div', { class: 'row' }, approve, decline)));
+  });
+  $('#pastWrap').hidden = !past.length; const pl = $('#pastList'); pl.innerHTML = '';
+  past.slice(0, 50).forEach(r => pl.append(el('div', {}, el('span', { class: 'small' }, `${r.name} · ${r.documents.join(', ')}`), el('span', { class: 'tag' + (r.state === 'approved' ? '' : ' no') }, r.state === 'approved' ? 'Approved' : 'Declined'))));
+}
+async function decide(id, action, btn) {
+  btn.disabled = true;
+  try { await api('admin/request', { method: 'POST', body: { id, action } }); toast(action === 'approve' ? 'Approved. Link emailed.' : 'Declined.'); await load(); }
+  catch (e) { toast(e.message); btn.disabled = false; }
+}
+
+/* ---------- status ---------- */
+function renderStatus() { document.querySelectorAll('input[name=status]').forEach(i => i.checked = i.value === state.status); }
+document.querySelectorAll('input[name=status]').forEach(i => i.addEventListener('change', async () => {
+  try { await api('admin/status', { method: 'POST', body: { status: i.value } }); toast('Status: ' + STATUS_NAMES[i.value]); } catch (e) { toast(e.message); }
+}));
+
+/* ---------- log posts with photos ---------- */
+let draft = { id: null, photos: [] };
+function renderThumbs() {
+  const t = $('#thumbs'); t.innerHTML = '';
+  draft.photos.forEach((id, i) => t.append(el('div', { class: 'thumb' }, el('img', { src: photoUrl(id), alt: 'Photo ' + (i + 1) }),
+    el('button', { type: 'button', 'aria-label': 'Remove photo ' + (i + 1), onclick: () => { draft.photos.splice(i, 1); renderThumbs(); } }, '×'))));
+}
+function resetDraft() {
+  draft = { id: null, photos: [] }; $('#pTitle').value = ''; $('#pText').value = ''; $('#pDate').value = new Date().toISOString().slice(0, 10);
+  $('#editing').hidden = true; $('#cancelEdit').hidden = true; $('#postBtn').textContent = 'Post'; renderThumbs();
+}
+$('#addPhotos').addEventListener('click', () => { $('#photoPick').value = ''; $('#photoPick').click(); });
+$('#photoPick').addEventListener('change', async () => {
+  const files = [...$('#photoPick').files].slice(0, 8 - draft.photos.length);
+  if (!files.length) { toast('8 photos is the limit for one post.'); return; }
+  for (const [i, f] of files.entries()) {
+    toast(`Cleaning and uploading ${i + 1} of ${files.length}…`);
+    try { draft.photos.push(await uploadImage(f, 'photo')); renderThumbs(); } catch (e) { toast(e.message); return; }
+  }
+  toast(files.length === 1 ? 'Photo added.' : files.length + ' photos added.');
+});
+$('#postForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const body = { id: draft.id || undefined, title: $('#pTitle').value, date: $('#pDate').value, text: $('#pText').value, photos: draft.photos };
+  if (!body.title.trim() && !body.text.trim() && !body.photos.length) { toast('Add a title, some text or a photo.'); return; }
+  try { await api('admin/post', { method: 'POST', body }); toast(draft.id ? 'Post updated.' : 'Posted.'); resetDraft(); await load(); }
+  catch (x) { toast(x.message); }
+});
+$('#cancelEdit').addEventListener('click', resetDraft);
+function editPost(p) {
+  draft = { id: p.id, photos: [...(p.photos || [])] };
+  $('#pTitle').value = p.title || ''; $('#pText').value = p.text || ''; $('#pDate').value = p.date;
+  $('#editing').textContent = 'Editing “' + (p.title || p.date) + '”'; $('#editing').hidden = false; $('#cancelEdit').hidden = false; $('#postBtn').textContent = 'Save changes';
+  renderThumbs(); $('#pTitle').focus(); window.scrollTo({ top: $('#postForm').getBoundingClientRect().top + scrollY - 80, behavior: 'smooth' });
+}
+function renderPosts() {
+  const ps = $('#postList'); ps.innerHTML = '';
+  if (!state.posts.length) ps.append(el('p', { class: 'muted small', style: 'margin:0' }, 'No posts yet.'));
+  state.posts.forEach(p => ps.append(el('div', {},
+    el('span', { class: 'muted small' }, p.date), p.title ? el('strong', {}, p.title) : '', p.text ? el('span', { class: 'small', style: 'white-space:pre-line' }, p.text) : '',
+    p.photos && p.photos.length ? el('div', { class: 'thumbs' }, p.photos.map((id, i) => el('div', { class: 'thumb' }, el('img', { src: photoUrl(id), alt: 'Photo ' + (i + 1) })))) : '',
+    el('div', { class: 'row' }, el('button', { class: 'btn ghost mini', type: 'button', onclick: () => editPost(p) }, 'Edit'),
+      el('button', { class: 'btn danger mini', type: 'button', onclick: () => delPost(p) }, 'Delete')))));
+}
+async function delPost(p) { if (!confirm('Delete “' + (p.title || p.date) + '”?')) return; try { await api('admin/post?id=' + encodeURIComponent(p.id), { method: 'DELETE' }); toast('Deleted.'); if (draft.id === p.id) resetDraft(); await load(); } catch (e) { toast(e.message); } }
+
+/* ---------- links ---------- */
+let saveLinksTimer = null;
+async function saveLinks(quiet) {
+  try { const r = await api('admin/links', { method: 'POST', body: { links: state.links } }); state.links = r.links; if (!quiet) toast('Links saved.'); renderLinks(); }
+  catch (e) { toast(e.message); }
+}
+const queueLinks = () => { clearTimeout(saveLinksTimer); saveLinksTimer = setTimeout(() => saveLinks(), 700); };
+let logoFor = null;
+$('#logoPick').addEventListener('change', async () => {
+  const f = $('#logoPick').files[0]; if (!f || !logoFor) return;
+  toast('Uploading logo…');
+  try { logoFor.logo = await uploadImage(f, 'logo'); await saveLinks(true); toast('Logo added.'); } catch (e) { toast(e.message); }
+});
+function renderLinks() {
+  const box = $('#linkList'); box.innerHTML = '';
+  state.links.forEach((l, i) => {
+    const logo = el('span', { class: 'logo', style: 'background:' + l.color }, l.logo ? el('img', { src: photoUrl(l.logo), alt: '' }) : el('span', { style: 'color:#fff;font-weight:700' }, (l.label || '?').slice(0, 1).toUpperCase()));
+    const iconSel = el('select', { 'aria-label': 'Icon for ' + l.label, onchange: (e) => { l.icon = e.target.value; queueLinks(); } }, Object.entries(ICON_NAMES).map(([k, v]) => el('option', { value: k, selected: l.icon === k }, v)));
+    box.append(el('div', {},
+      el('div', { class: 'row' }, logo, el('strong', { style: 'flex:1' }, l.label || 'New link'),
+        el('button', { class: 'btn ghost mini', type: 'button', disabled: i === 0, 'aria-label': 'Move up', onclick: () => { [state.links[i - 1], state.links[i]] = [state.links[i], state.links[i - 1]]; saveLinks(); } }, '↑'),
+        el('button', { class: 'btn ghost mini', type: 'button', disabled: i === state.links.length - 1, 'aria-label': 'Move down', onclick: () => { [state.links[i + 1], state.links[i]] = [state.links[i], state.links[i + 1]]; saveLinks(); } }, '↓')),
+      el('div', { class: 'grid2' },
+        el('div', { class: 'field' }, el('label', { for: 'll' + i }, 'Name'), el('input', { id: 'll' + i, type: 'text', value: l.label, maxlength: 60, oninput: (e) => { l.label = e.target.value; queueLinks(); } })),
+        el('div', { class: 'field' }, el('label', { for: 'lu' + i }, 'Address'), el('input', { id: 'lu' + i, type: 'url', value: l.url, placeholder: 'https://', oninput: (e) => { l.url = e.target.value.trim(); queueLinks(); } })),
+        el('div', { class: 'field' }, el('label', { for: 'ln' + i }, 'Note (optional)'), el('input', { id: 'ln' + i, type: 'text', value: l.note || '', maxlength: 80, placeholder: 'e.g. my current project', oninput: (e) => { l.note = e.target.value; queueLinks(); } })),
+        el('div', { class: 'field' }, el('label', {}, 'Colour and icon'), el('div', { class: 'row', style: 'flex-wrap:nowrap' },
+          el('input', { type: 'color', class: 'swatch', value: l.color, 'aria-label': 'Colour for ' + l.label, onchange: (e) => { l.color = e.target.value; saveLinks(); } }), iconSel))),
+      el('div', { class: 'row' },
+        el('button', { class: 'btn ghost mini', type: 'button', onclick: () => { logoFor = l; $('#logoPick').value = ''; $('#logoPick').click(); } }, l.logo ? 'Replace logo' : 'Upload logo'),
+        l.logo ? el('button', { class: 'btn ghost mini', type: 'button', onclick: () => { delete l.logo; saveLinks(); } }, 'Remove logo') : '',
+        el('button', { class: 'btn danger mini', type: 'button', onclick: () => { if (confirm('Remove ' + (l.label || 'this link') + '?')) { state.links.splice(i, 1); saveLinks(); } } }, 'Delete link'))));
+  });
+}
+$('#addLink').addEventListener('click', () => { state.links.push({ label: 'New link', url: 'https://', note: '', color: '#3B6D11', icon: 'link' }); renderLinks(); $('#ll' + (state.links.length - 1)).select(); });
+
+/* ---------- documents ---------- */
+async function saveDocs(msg) {
+  try { const r = await api('admin/docs', { method: 'POST', body: { docs: state.docs } }); state.docs = r.docs; if (msg) toast(msg); renderDocs(); }
+  catch (e) { toast(e.message); await load(); }
+}
+let saveDocsTimer = null;
+const queueDocs = () => { clearTimeout(saveDocsTimer); saveDocsTimer = setTimeout(() => saveDocs('Saved.'), 800); };
+$('#ndSec').append(...Object.entries(SECTION_NAMES).map(([k, v]) => el('option', { value: k }, v)));
+$('#addDoc').addEventListener('submit', async (e) => {
+  e.preventDefault(); const name = $('#ndName').value.trim(); if (!name) { toast('Give the document a name.'); return; }
+  state.docs.push({ name, section: $('#ndSec').value }); $('#ndName').value = ''; await saveDocs('Added. Now upload its file or link.');
+});
+let pickFor = null;
+function pickFile(d) { pickFor = d; $('#filePick').value = ''; $('#filePick').click(); }
+$('#filePick').addEventListener('change', () => {
+  const f = $('#filePick').files[0]; if (!f || !pickFor) return;
+  if (f.size > 4 * 1024 * 1024) { toast('That file is over 4 MB. Use a link instead.'); return; }
+  const d = pickFor;
+  (async () => {
+    toast('Uploading…');
+    try { await apiRaw('admin/doc-file?id=' + encodeURIComponent(d.id) + '&name=' + encodeURIComponent(f.name), f, f.type || 'application/octet-stream'); toast('Uploaded.'); await load(); }
+    catch (e) { toast(e.message); }
+  })();
+});
+async function setLink(d, link) {
+  if (!/^https:\/\/\S+$/.test(link)) { toast('Paste a full link starting with https://'); return; }
+  try { await api('admin/doc-link', { method: 'POST', body: { id: d.id, link } }); toast('Link saved.'); await load(); } catch (e) { toast(e.message); }
+}
+function renderDocs() {
+  $('#pwState').textContent = state.hasPassword ? 'A password is set. Saving a new one replaces it.' : 'No password set yet.';
+  const wrap = $('#docGroups'); wrap.innerHTML = '';
+  Object.entries(SECTION_NAMES).forEach(([sec, title]) => {
+    const list = state.docs.filter(d => d.section === sec);
+    const g = el('div', { class: 'group' }, el('h3', {}, title + (list.length ? ' · ' + list.length : '')));
+    if (!list.length) g.append(el('p', { class: 'muted small', style: 'margin:0' }, 'Nothing here yet.'));
+    const lst = el('div', { class: 'list' });
+    list.forEach((d) => {
+      const idx = state.docs.indexOf(d); const m = state.meta[d.id];
+      const sameSec = state.docs.map((x, j) => [x, j]).filter(([x]) => x.section === sec).map(([, j]) => j);
+      const pos = sameSec.indexOf(idx);
+      const info = !m ? el('span', { class: 'tag no' }, 'Empty') : m.type === 'link' ? el('span', { class: 'tag' }, 'Link') : el('span', { class: 'tag' }, 'File · ' + kb(m.size || 0));
+      const linkBox = el('div', { class: 'row', hidden: true });
+      const linkIn = el('input', { type: 'url', placeholder: 'https://…', 'aria-label': 'Link for ' + d.name, style: 'flex:1;min-width:200px', value: m && m.type === 'link' ? m.link : '' });
+      linkBox.append(linkIn, el('button', { class: 'btn soft mini', type: 'button', onclick: () => setLink(d, linkIn.value.trim()) }, 'Save link'));
+      lst.append(el('div', {},
+        el('div', { class: 'row', style: 'justify-content:space-between' },
+          el('input', { type: 'text', value: d.name, maxlength: 160, 'aria-label': 'Name', style: 'flex:1;min-width:160px', oninput: (e) => { d.name = e.target.value; if (d.name.trim()) queueDocs(); } }), info),
+        el('div', { class: 'row' },
+          el('input', { type: 'text', value: d.extra || '', maxlength: 20, placeholder: 'Badge, e.g. 5/5', 'aria-label': 'Badge for ' + d.name, style: 'width:140px', oninput: (e) => { d.extra = e.target.value; queueDocs(); } }),
+          el('select', { 'aria-label': 'Section for ' + d.name, style: 'width:auto', onchange: (e) => { d.section = e.target.value; saveDocs('Moved.'); } }, Object.entries(SECTION_NAMES).map(([k, v]) => el('option', { value: k, selected: k === d.section }, v))),
+          el('button', { class: 'btn ghost mini', type: 'button', disabled: pos === 0, 'aria-label': 'Move up', onclick: () => { const j = sameSec[pos - 1]; [state.docs[j], state.docs[idx]] = [state.docs[idx], state.docs[j]]; saveDocs(); } }, '↑'),
+          el('button', { class: 'btn ghost mini', type: 'button', disabled: pos === sameSec.length - 1, 'aria-label': 'Move down', onclick: () => { const j = sameSec[pos + 1]; [state.docs[j], state.docs[idx]] = [state.docs[idx], state.docs[j]]; saveDocs(); } }, '↓')),
+        m && m.type === 'file' ? el('span', { class: 'muted small' }, m.filename) : '',
+        el('div', { class: 'row' },
+          el('button', { class: 'btn ghost mini', type: 'button', onclick: () => pickFile(d) }, m && m.type === 'file' ? 'Replace file' : 'Upload file'),
+          el('button', { class: 'btn ghost mini', type: 'button', onclick: () => { linkBox.hidden = !linkBox.hidden; if (!linkBox.hidden) linkIn.focus(); } }, 'Use a link'),
+          m ? el('button', { class: 'btn ghost mini', type: 'button', onclick: async () => { if (!confirm('Remove the file or link from ' + d.name + '?')) return; try { await api('admin/doc?id=' + encodeURIComponent(d.id), { method: 'DELETE' }); toast('Removed.'); await load(); } catch (x) { toast(x.message); } } }, 'Clear file') : '',
+          el('button', { class: 'btn danger mini', type: 'button', onclick: () => { if (!confirm('Delete ' + d.name + ' from your site?')) return; state.docs.splice(idx, 1); saveDocs('Deleted.'); } }, 'Delete')),
+        linkBox));
+    });
+    g.append(lst); wrap.append(g);
+  });
+}
+$('#pwForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  try { await api('admin/password', { method: 'POST', body: { password: $('#docPw').value } }); $('#docPw').value = ''; toast('Password saved.'); await load(); }
+  catch (x) { toast(x.message); }
+});
+
+/* ---------- who opened what ---------- */
+const fmtShort = (iso) => new Date(iso).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+function logMatches(e, q) { return !q || (e.email || '').toLowerCase().includes(q) || (e.doc || '').toLowerCase().includes(q); }
+function renderAccess() {
+  const q = ($('#logFilter').value || '').trim().toLowerCase();
+  const log = (state.accessLog || []).filter(e => logMatches(e, q));
+  const people = new Map();
+  log.forEach(e => {
+    const p = people.get(e.email) || { email: e.email, last: e.at, opens: 0, unlocks: 0, docs: new Map() };
+    if (e.action === 'opened') { p.opens++; p.docs.set(e.doc, (p.docs.get(e.doc) || 0) + 1); } else p.unlocks++;
+    people.set(e.email, p);
+  });
+  const box = $('#logPeople'); box.innerHTML = '';
+  if (!people.size) box.append(el('p', { class: 'muted small', style: 'margin:0' }, q ? 'No matches.' : 'Nobody has opened anything yet.'));
+  [...people.values()].forEach(p => box.append(el('div', {},
+    el('div', { class: 'row', style: 'justify-content:space-between' }, el('a', { href: 'mailto:' + p.email, style: 'font-weight:700' }, p.email), el('span', { class: 'muted small' }, 'Last: ' + fmtShort(p.last))),
+    el('span', { class: 'small' }, (p.opens ? p.opens + (p.opens === 1 ? ' open' : ' opens') : 'No documents opened yet') + (p.unlocks ? ' · unlocked ' + p.unlocks + (p.unlocks === 1 ? ' time' : ' times') : '')),
+    p.docs.size ? el('span', { class: 'muted small' }, [...p.docs.entries()].map(([d, n]) => d + (n > 1 ? ' ×' + n : '')).join(' · ')) : '')));
+  const list = $('#logList'); list.innerHTML = '';
+  log.slice(0, 300).forEach(e => list.append(el('div', {},
+    el('span', { class: 'muted small' }, fmtShort(e.at)),
+    el('span', { class: 'small' }, e.email + ' — ' + (e.action === 'opened' ? 'opened ' + e.doc : 'unlocked with ' + (e.via === 'approved link' ? 'an approved link' : 'the password')) + (e.action === 'opened' ? ' (' + e.via + ')' : '')))));
+  $('#logAllWrap').hidden = !log.length;
+}
+$('#logFilter').addEventListener('input', renderAccess);
+$('#logCsv').addEventListener('click', () => {
+  const rows = [['time', 'email', 'action', 'document', 'via']].concat((state.accessLog || []).map(e => [e.at, e.email, e.action, e.doc || '', e.via || '']));
+  const csv = rows.map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(',')).join('\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = 'emilylam-who-opened-what.csv'; a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+});
+$('#logClear').addEventListener('click', async () => {
+  if (!confirm('Clear the whole “Who opened what” history?')) return;
+  try { await api('admin/access-log', { method: 'DELETE' }); toast('Cleared.'); await load(); } catch (e) { toast(e.message); }
+});
+
+/* ---------- admin sign-ins ---------- */
+function deviceName(ua) {
+  ua = ua || '';
+  const os = /iPhone/.test(ua) ? 'iPhone' : /iPad/.test(ua) ? 'iPad' : /Android/.test(ua) ? 'Android' : /Mac OS X|Macintosh/.test(ua) ? 'Mac' : /Windows/.test(ua) ? 'Windows' : /CrOS/.test(ua) ? 'Chromebook' : /Linux/.test(ua) ? 'Linux' : 'Unknown device';
+  const br = /Edg\//.test(ua) ? 'Edge' : /OPR\//.test(ua) ? 'Opera' : /SamsungBrowser/.test(ua) ? 'Samsung Internet' : /CriOS|Chrome\//.test(ua) ? 'Chrome' : /FxiOS|Firefox\//.test(ua) ? 'Firefox' : /Safari\//.test(ua) ? 'Safari' : 'browser';
+  return os + ' · ' + br;
+}
+let regionNames = null; try { regionNames = new Intl.DisplayNames(['en'], { type: 'region' }); } catch (e) {}
+const placeName = (e) => [e.city, e.country ? ((regionNames && regionNames.of(e.country)) || e.country) : ''].filter(Boolean).join(', ') || 'Unknown location';
+function renderAdminLog() {
+  const box = $('#adminLogList'); box.innerHTML = '';
+  const log = state.adminLog || [];
+  if (!log.length) box.append(el('p', { class: 'muted small', style: 'margin:0' }, 'No sign-ins recorded yet.'));
+  log.slice(0, 60).forEach(e => {
+    const label = e.event ? 'Signed out all devices' : e.ok ? 'Signed in' : 'Failed: ' + (e.reason || 'wrong password');
+    box.append(el('div', {},
+      el('div', { class: 'row', style: 'justify-content:space-between' },
+        el('span', { class: 'tag' + (e.ok ? '' : ' no'), style: e.ok ? '' : 'color:#B42318;border-color:#F3C1BA' }, label),
+        el('span', { class: 'muted small' }, fmtDate(e.at))),
+      el('span', { class: 'small' }, deviceName(e.ua) + ' · ' + placeName(e)),
+      el('span', { class: 'muted small' }, 'IP ' + (e.ip || 'unknown'))));
+  });
+}
+$('#signoutAll').addEventListener('click', async () => {
+  if (!confirm('Sign out every device, including this one? You’ll need your admin password to log back in.')) return;
+  try { await api('admin/signout-all', { method: 'POST' }); toast('Signed out everywhere.'); signOut(); } catch (e) { toast(e.message); }
+});
+
+resetDraft();
+if (token) load(); else signOut();
+
+</script>
+</body>
+</html>
